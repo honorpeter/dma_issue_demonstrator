@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="common_pkg" />
+            <top_module name="glbl" />
+            <top_module name="top" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="543001fs"></ZoomEndTime>
+      <Cursor1Time time="801900000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="193"></NameColumnWidth>
+      <ValueColumnWidth column_width="121"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="40" />
+   <wvobject type="logic" fp_name="/top/s00_axis_aclk">
+      <obj_property name="ElementShortName">s00_axis_aclk</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_aclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/s00_axis_aresetn">
+      <obj_property name="ElementShortName">s00_axis_aresetn</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_aresetn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/s00_axis_tready">
+      <obj_property name="ElementShortName">s00_axis_tready</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_tready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/s00_axis_tdata">
+      <obj_property name="ElementShortName">s00_axis_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/s00_axis_tstrb">
+      <obj_property name="ElementShortName">s00_axis_tstrb[3:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_tstrb[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/s00_axis_tvalid">
+      <obj_property name="ElementShortName">s00_axis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_tvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/s00_axis_tlast">
+      <obj_property name="ElementShortName">s00_axis_tlast</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_tlast</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/s00_axis_tid">
+      <obj_property name="ElementShortName">s00_axis_tid[4:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_tid[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/s00_axis_tdest">
+      <obj_property name="ElementShortName">s00_axis_tdest[4:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_tdest[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/m00_axis_aclk">
+      <obj_property name="ElementShortName">m00_axis_aclk</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_aclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/m00_axis_aresetn">
+      <obj_property name="ElementShortName">m00_axis_aresetn</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_aresetn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/m00_axis_tready">
+      <obj_property name="ElementShortName">m00_axis_tready</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/m00_axis_tdata">
+      <obj_property name="ElementShortName">m00_axis_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/m00_axis_tstrb">
+      <obj_property name="ElementShortName">m00_axis_tstrb[3:0]</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tstrb[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/m00_axis_tvalid">
+      <obj_property name="ElementShortName">m00_axis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/m00_axis_tlast">
+      <obj_property name="ElementShortName">m00_axis_tlast</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tlast</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/m00_axis_tid">
+      <obj_property name="ElementShortName">m00_axis_tid[4:0]</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tid[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/m00_axis_tdest">
+      <obj_property name="ElementShortName">m00_axis_tdest[4:0]</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tdest[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/s00_job_s">
+      <obj_property name="ElementShortName">s00_job_s</obj_property>
+      <obj_property name="ObjectShortName">s00_job_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/fifo_rst_s">
+      <obj_property name="ElementShortName">fifo_rst_s</obj_property>
+      <obj_property name="ObjectShortName">fifo_rst_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/fifo_in_s">
+      <obj_property name="ElementShortName">fifo_in_s</obj_property>
+      <obj_property name="ObjectShortName">fifo_in_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/fifo_in_slv_s">
+      <obj_property name="ElementShortName">fifo_in_slv_s[24:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_in_slv_s[24:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/fifo_out_s">
+      <obj_property name="ElementShortName">fifo_out_s</obj_property>
+      <obj_property name="ObjectShortName">fifo_out_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/fifo_out_slv_s">
+      <obj_property name="ElementShortName">fifo_out_slv_s[24:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_out_slv_s[24:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/fifo_wren_s">
+      <obj_property name="ElementShortName">fifo_wren_s</obj_property>
+      <obj_property name="ObjectShortName">fifo_wren_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/fifo_full_s">
+      <obj_property name="ElementShortName">fifo_full_s</obj_property>
+      <obj_property name="ObjectShortName">fifo_full_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/fifo_rden_s">
+      <obj_property name="ElementShortName">fifo_rden_s</obj_property>
+      <obj_property name="ObjectShortName">fifo_rden_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/fifo_empty_s">
+      <obj_property name="ElementShortName">fifo_empty_s</obj_property>
+      <obj_property name="ObjectShortName">fifo_empty_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/tid_s">
+      <obj_property name="ElementShortName">tid_s[4:0]</obj_property>
+      <obj_property name="ObjectShortName">tid_s[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top/tdest_s">
+      <obj_property name="ElementShortName">tdest_s[4:0]</obj_property>
+      <obj_property name="ObjectShortName">tdest_s[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top/s00_axis_tready_s">
+      <obj_property name="ElementShortName">s00_axis_tready_s</obj_property>
+      <obj_property name="ObjectShortName">s00_axis_tready_s</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top/C_AXIS_TID_WIDTH">
+      <obj_property name="ElementShortName">C_AXIS_TID_WIDTH</obj_property>
+      <obj_property name="ObjectShortName">C_AXIS_TID_WIDTH</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top/C_AXIS_TDEST_WIDTH">
+      <obj_property name="ElementShortName">C_AXIS_TDEST_WIDTH</obj_property>
+      <obj_property name="ObjectShortName">C_AXIS_TDEST_WIDTH</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top/C_FIFO_TOTAL_WIDTH">
+      <obj_property name="ElementShortName">C_FIFO_TOTAL_WIDTH</obj_property>
+      <obj_property name="ObjectShortName">C_FIFO_TOTAL_WIDTH</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top/C_FIFO_LENGTH_LEFT">
+      <obj_property name="ElementShortName">C_FIFO_LENGTH_LEFT</obj_property>
+      <obj_property name="ObjectShortName">C_FIFO_LENGTH_LEFT</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top/C_FIFO_LENGTH_RIGHT">
+      <obj_property name="ElementShortName">C_FIFO_LENGTH_RIGHT</obj_property>
+      <obj_property name="ObjectShortName">C_FIFO_LENGTH_RIGHT</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top/C_FIFO_WAIT_TIME_LEFT">
+      <obj_property name="ElementShortName">C_FIFO_WAIT_TIME_LEFT</obj_property>
+      <obj_property name="ObjectShortName">C_FIFO_WAIT_TIME_LEFT</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top/C_FIFO_WAIT_TIME_RIGHT">
+      <obj_property name="ElementShortName">C_FIFO_WAIT_TIME_RIGHT</obj_property>
+      <obj_property name="ObjectShortName">C_FIFO_WAIT_TIME_RIGHT</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top/C_FIFO_TDEST_LEFT">
+      <obj_property name="ElementShortName">C_FIFO_TDEST_LEFT</obj_property>
+      <obj_property name="ObjectShortName">C_FIFO_TDEST_LEFT</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top/C_FIFO_TDEST_RIGHT">
+      <obj_property name="ElementShortName">C_FIFO_TDEST_RIGHT</obj_property>
+      <obj_property name="ObjectShortName">C_FIFO_TDEST_RIGHT</obj_property>
+   </wvobject>
+</wave_config>

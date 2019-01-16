@@ -1,0 +1,186 @@
+!SESSION 2019-01-16 08:09:00.243 -----------------------------------------------
+eclipse.buildId=2017.4
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.sdk
+
+This is a continuation of log file /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.sdk/.metadata/.bak_0.log
+Created Time: 2019-01-16 08:55:54.200
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.201
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.208
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* JTAG-ONB4 251633000A5AA]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.209
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "JTAG-ONB4 251633000A5AA" && level==1}], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.235
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "JTAG-ONB4 251633000A5AA" && level==1}], Result: [null,      2  xczu9 (idcode 04738093 irlen 12 fpga)
+     5  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.235
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.249
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* JTAG-ONB4 251633000A5AA]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.249
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "JTAG-ONB4 251633000A5AA" && level==1}], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.277
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "JTAG-ONB4 251633000A5AA" && level==1}], Result: [null,      2  xczu9 (idcode 04738093 irlen 12 fpga)
+     5  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.277
+!MESSAGE XSCT Command: [version -server], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.284
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2017.4]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.284
+!MESSAGE XSCT Command: [version], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.284
+!MESSAGE XSCT command with result: [version], Result: [null, 2017.4]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.285
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.295
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* JTAG-ONB4 251633000A5AA]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.295
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "JTAG-ONB4 251633000A5AA" && level==1}], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.325
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "JTAG-ONB4 251633000A5AA" && level==1}], Result: [null,      2  xczu9 (idcode 04738093 irlen 12 fpga)
+     5  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.326
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "JTAG-ONB4 251633000A5AA" && level == 0}], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.353
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "JTAG-ONB4 251633000A5AA" && level == 0}], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.353
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.358
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 6000000]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.359
+!MESSAGE XSCT Command: [source /opt/Xilinx/SDK/2017.4/scripts/sdk/util/zynqmp_utils.tcl], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.359
+!MESSAGE XSCT command with result: [source /opt/Xilinx/SDK/2017.4/scripts/sdk/util/zynqmp_utils.tcl], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.360
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG-ONB4 251633000A5AA"} -index 1], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.465
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG-ONB4 251633000A5AA"} -index 1], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.465
+!MESSAGE XSCT Command: [loadhw -hw /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.sdk/zusys_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.804
+!MESSAGE XSCT command with result: [loadhw -hw /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.sdk/zusys_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]], Result: [null, zusys_wrapper_2]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.805
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.817
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.818
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG-ONB4 251633000A5AA"} -index 1], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.867
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG-ONB4 251633000A5AA"} -index 1], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.868
+!MESSAGE XSCT Command: [source /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.sdk/zusys_wrapper_hw_platform_0/psu_init_MZ.tcl], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.876
+!MESSAGE XSCT command with result: [source /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.sdk/zusys_wrapper_hw_platform_0/psu_init_MZ.tcl], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:54.877
+!MESSAGE XSCT Command: [psu_init], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:57.358
+!MESSAGE XSCT command with result: [psu_init], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:57.359
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:58.360
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:58.361
+!MESSAGE XSCT Command: [psu_ps_pl_isolation_removal], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:58.384
+!MESSAGE XSCT command with result: [psu_ps_pl_isolation_removal], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:58.384
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.387
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.388
+!MESSAGE XSCT Command: [psu_ps_pl_reset_config], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.418
+!MESSAGE XSCT command with result: [psu_ps_pl_reset_config], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.419
+!MESSAGE XSCT Command: [catch {psu_protection}], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.502
+!MESSAGE XSCT command with result: [catch {psu_protection}], Result: [null, 0]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.503
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "JTAG-ONB4 251633000A5AA"} -index 1], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.549
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "JTAG-ONB4 251633000A5AA"} -index 1], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.550
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.578
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:55:59.579
+!MESSAGE XSCT Command: [dow /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.sdk/dma_issue_demonstrator/Debug/dma_issue_demonstrator.elf], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:56:00.596
+!MESSAGE XSCT command with result: [dow /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.sdk/dma_issue_demonstrator/Debug/dma_issue_demonstrator.elf], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:56:00.597
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:56:00.600
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:56:00.647
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "JTAG-ONB4 251633000A5AA"} -index 1], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:56:00.699
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "JTAG-ONB4 251633000A5AA"} -index 1], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:56:00.699
+!MESSAGE XSCT Command: [con], Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 08:56:00.754
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-13
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 09:25:15.088
+!MESSAGE XSCT Command: [disconnect tcfchan#14], Thread: Thread-1127
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-01-16 09:25:15.094
+!MESSAGE XSCT command with result: [disconnect tcfchan#14], Result: [null, ]. Thread: Thread-1127

@@ -1,0 +1,134 @@
+------- DMA issue demonstrator --------                                         
+--- Entering main() ---                                                         
+DMA transfers in progress...                                                    
+Try no 0 successful                                                             
+Try no 1 successful                                                             
+Try no 2 successful                                                             
+Transfers failed at try no 3                                                    
+TxDone=103/1000, RxDone=2/10000                                                 
+                                                                                
+******* Dump registers of the DMA: *******                                      
+Channel TX 0.0:                                                                 
+Dump registers A0000000:                                                        
+Control REG: 64017003                                                           
+Status REG: 00010008                                                            
+Cur BD REG: 430307C0                                                            
+Tail BD REG: 4303E7C0                                                           
+                                                                                
+Channel RX 0.0:                                                                 
+Dump registers A0000030:                                                        
+Control REG: 64017003                                                           
+Status REG: 0001000A                                                            
+Cur BD REG: 410EA640                                                            
+Tail BD REG: 41138800                                                           
+                                                                                
+Channel RX 0.1:                                                                 
+Dump registers A0000030:                                                        
+Control REG: 64017003                                                           
+Status REG: 0001000A                                                            
+Cur BD REG: 420EA640                                                            
+Tail BD REG: 42138800                                                           
+                                                                                
+*********** Dump descriptors ***********                                        
+Channel TX 0.0                                                                  
+Dump BD 43030780:                                                               
+        Next Bd Ptr: 430307C0                                                   
+        Buff addr: 6105AE10                                                     
+        MCDMA Fields: 3000000                                                   
+        VSIZE_STRIDE: 80001                                                     
+        Contrl len: C000078                                                     
+        Status: 80000078                                                        
+        APP 0: 0                                                                
+        APP 1: 0                                                                
+        APP 2: 0                                                                
+        APP 3: 0                                                                
+        APP 4: 0                                                                
+        SW ID: 6105AE10                                                         
+        StsCtrl: 0                                                              
+        DRE: 4                                                                  
+                                                                                
+Dump BD 430307C0:                                                               
+        Next Bd Ptr: 43030800                                                   
+        Buff addr: 6105AE88                                                     
+        MCDMA Fields: 3000000                                                   
+        VSIZE_STRIDE: 80001                                                     
+        Contrl len: C000078                                                     
+        Status: 0                                                               
+        APP 0: 0                                                                
+        APP 1: 0                                                                
+        APP 2: 0                                                                
+        APP 3: 0                                                                
+        APP 4: 0                                                                
+        SW ID: 6105AE88                                                         
+        StsCtrl: 0                                                              
+        DRE: 4                                                                  
+                                                                                
+                                                                                
+Channel RX 0.0                                                                  
+Dump BD 410EA600:                                                               
+        Next Bd Ptr: 410EA640                                                   
+        Buff addr: 7826EEC0                                                     
+        MCDMA Fields: 3000000                                                   
+        VSIZE_STRIDE: 80001                                                     
+        Contrl len: FA0                                                         
+        Status: 8C000000                                                        
+        APP 0: 0                                                                
+        APP 1: 0                                                                
+        APP 2: 0                                                                
+        APP 3: 0                                                                
+        APP 4: 0                                                                
+        SW ID: 7826EEC0                                                         
+        StsCtrl: 0                                                              
+        DRE: 4                                                                  
+                                                                                
+Dump BD 410EA640:                                                               
+        Next Bd Ptr: 410EA680                                                   
+        Buff addr: 78270E00                                                     
+        MCDMA Fields: 3000000                                                   
+        VSIZE_STRIDE: 80001                                                     
+        Contrl len: FA0                                                         
+        Status: 0                                                               
+        APP 0: 0                                                                
+        APP 1: 0                                                                
+        APP 2: 0                                                                
+        APP 3: 0                                                                
+        APP 4: 0                                                                
+        SW ID: 78270E00                                                         
+        StsCtrl: 0                                                              
+        DRE: 4                                                                  
+                                                                                
+Channel RX 0.1                                                                  
+Dump BD 420EA600:                                                               
+        Next Bd Ptr: 420EA640                                                   
+        Buff addr: 7826FE60                                                     
+        MCDMA Fields: 3000000                                                   
+        VSIZE_STRIDE: 80001                                                     
+        Contrl len: FA0                                                         
+        Status: 8C000101                                                        
+        APP 0: 0                                                                
+        APP 1: 0                                                                
+        APP 2: 0                                                                
+        APP 3: 0                                                                
+        APP 4: 0                                                                
+        SW ID: 7826FE60                                                         
+        StsCtrl: 0                                                              
+        DRE: 4                                                                  
+                                                                                
+Dump BD 420EA640:                                                               
+        Next Bd Ptr: 420EA680                                                   
+        Buff addr: 78271DA0                                                     
+        MCDMA Fields: 3000000                                                   
+        VSIZE_STRIDE: 80001                                                     
+        Contrl len: FA0                                                         
+        Status: 0                                                               
+        APP 0: 0                                                                
+        APP 1: 0                                                                
+        APP 2: 0                                                                
+        APP 3: 0                                                                
+        APP 4: 0                                                                
+        SW ID: 78271DA0                                                         
+        StsCtrl: 0                                                              
+        DRE: 4                                                                  
+                                                                                
+Transfers failed at try no 3                                                    
+--- Exiting main() ---  

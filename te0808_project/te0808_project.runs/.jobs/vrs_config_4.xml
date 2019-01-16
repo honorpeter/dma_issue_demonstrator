@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="zusys_SC0808BF_0_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_SC0808BF_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="zusys_axis_live_audio_0_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_axis_live_audio_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="zusys_proc_sys_reset_0_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_proc_sys_reset_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="zusys_proc_sys_reset_1_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_proc_sys_reset_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="zusys_proc_sys_reset_0_0_synth_1"/>
+	</Run>
+	<Run Id="zusys_vio_general_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_vio_general_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="zusys_vio_rgpio_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_vio_rgpio_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="zusys_proc_sys_reset_2_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_proc_sys_reset_2_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="zusys_smartconnect_0_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_smartconnect_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="zusys_top_0_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_top_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="zusys_SC0808BF_0_0_synth_1"/>
+		<Parent Id="zusys_axis_live_audio_0_0_synth_1"/>
+		<Parent Id="zusys_proc_sys_reset_0_0_synth_1"/>
+		<Parent Id="zusys_proc_sys_reset_1_0_synth_1"/>
+		<Parent Id="zusys_vio_general_0_synth_1"/>
+		<Parent Id="zusys_vio_rgpio_0_synth_1"/>
+		<Parent Id="zusys_proc_sys_reset_2_0_synth_1"/>
+		<Parent Id="zusys_smartconnect_0_0_synth_1"/>
+		<Parent Id="zusys_top_0_0_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+		<Parent Id="synth_1"/>
+		<Parent Id="zusys_SC0808BF_0_0_synth_1"/>
+		<Parent Id="zusys_axis_live_audio_0_0_synth_1"/>
+		<Parent Id="zusys_proc_sys_reset_0_0_synth_1"/>
+		<Parent Id="zusys_proc_sys_reset_1_0_synth_1"/>
+		<Parent Id="zusys_vio_general_0_synth_1"/>
+		<Parent Id="zusys_vio_rgpio_0_synth_1"/>
+		<Parent Id="zusys_proc_sys_reset_2_0_synth_1"/>
+		<Parent Id="zusys_smartconnect_0_0_synth_1"/>
+		<Parent Id="zusys_top_0_0_synth_1"/>
+	</Run>
+</Runs>
+

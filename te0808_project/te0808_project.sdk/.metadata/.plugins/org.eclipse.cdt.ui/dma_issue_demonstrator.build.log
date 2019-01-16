@@ -1,0 +1,65 @@
+09:25:10 **** Incremental Build of configuration Debug for project dma_issue_demonstrator ****
+make all 
+Building file: ../src/main.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I../../standalone_bsp_0/psu_cortexa53_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:163:13: warning: unknown escape sequence: '\C'
+  xil_printf("\r\Channel TX 0.0\r\n", 0);
+             ^~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:164:24: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  XAxiDma_Bd* curTxBd = (XAxiDma_Bd*)XAxiDma_ReadReg(TxRingPtr->ChanBase, 0x08); // Get pointer to the current descriptor
+                        ^
+In file included from ../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma.h:488:0,
+                 from ../src/dma_management.h:10,
+                 from ../src/main.c:44:
+../src/main.c:165:47: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  XAxiDma_DumpBd(XAxiDma_BdRingPrev(TxRingPtr, (u32)curTxBd)); // Dump last descriptor
+                                               ^
+../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma_bdring.h:316:11: note: in definition of macro 'XAxiDma_BdRingPrev'
+   (((u32)(BdPtr) <= (RingPtr)->FirstBdAddr) ?  \
+           ^~~~~
+../src/main.c:165:47: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  XAxiDma_DumpBd(XAxiDma_BdRingPrev(TxRingPtr, (u32)curTxBd)); // Dump last descriptor
+                                               ^
+../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma_bdring.h:318:24: note: in definition of macro 'XAxiDma_BdRingPrev'
+    (XAxiDma_Bd*)((u32)(BdPtr) - (RingPtr)->Separation))
+                        ^~~~~
+../src/main.c:180:25: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   XAxiDma_Bd* curRxBd = (XAxiDma_Bd*)XAxiDma_ReadReg(curRxRingPtr->ChanBase, curBdOffset); // Get pointer to the current descriptor
+                         ^
+In file included from ../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma.h:488:0,
+                 from ../src/dma_management.h:10,
+                 from ../src/main.c:44:
+../src/main.c:181:51: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   XAxiDma_DumpBd(XAxiDma_BdRingPrev(curRxRingPtr, (u32)curRxBd)); // Dump last descriptor
+                                                   ^
+../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma_bdring.h:316:11: note: in definition of macro 'XAxiDma_BdRingPrev'
+   (((u32)(BdPtr) <= (RingPtr)->FirstBdAddr) ?  \
+           ^~~~~
+../src/main.c:181:51: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   XAxiDma_DumpBd(XAxiDma_BdRingPrev(curRxRingPtr, (u32)curRxBd)); // Dump last descriptor
+                                                   ^
+../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma_bdring.h:318:24: note: in definition of macro 'XAxiDma_BdRingPrev'
+    (XAxiDma_Bd*)((u32)(BdPtr) - (RingPtr)->Separation))
+                        ^~~~~
+../src/main.c: In function 'dma_transfers':
+../src/main.c:256:36: warning: comparison between pointer and integer
+     if ((RxStartAddr + length - 1) > RX_BUFFER_HIGH) RxStartAddr = (u32*)RX_BUFFER_BASE;
+                                    ^
+Finished building: ../src/main.c
+ 
+Building target: dma_issue_demonstrator.elf
+Invoking: ARM v8 gcc linker
+aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/psu_cortexa53_0/lib -o "dma_issue_demonstrator.elf"  ./src/dma_management.o ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: dma_issue_demonstrator.elf
+ 
+Invoking: ARM v8 Print Size
+aarch64-none-elf-size dma_issue_demonstrator.elf  |tee "dma_issue_demonstrator.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  94332	   7832	  23648	 125812	  1eb74	dma_issue_demonstrator.elf
+Finished building: dma_issue_demonstrator.elf.size
+ 
+
+09:25:11 Build Finished (took 670ms)
+

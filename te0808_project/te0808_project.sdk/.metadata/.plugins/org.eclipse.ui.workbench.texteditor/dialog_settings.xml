@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="curBdOffset" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="curBdOffset"/>
+			<item value="wait_time1"/>
+			<item value="disp_dma_"/>
+			<item value="rxdone"/>
+			<item value="bdcount"/>
+			<item value="not enough free"/>
+			<item value="free"/>
+			<item value="todo"/>
+		</list>
+		<list key="replacehistory">
+			<item value="NB_RX_PER_TX"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="374" key="DIALOG_WIDTH"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="474" key="DIALOG_HEIGHT"/>
+		<item value="70" key="DIALOG_X_ORIGIN"/>
+		<item value="215" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

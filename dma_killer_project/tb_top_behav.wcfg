@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="common_pkg" />
+            <top_module name="glbl" />
+            <top_module name="tb_pkg" />
+            <top_module name="tb_top" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="90166667fs"></ZoomStartTime>
+      <ZoomEndTime time="449166668fs"></ZoomEndTime>
+      <Cursor1Time time="150000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="210"></NameColumnWidth>
+      <ValueColumnWidth column_width="78"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="3" />
+   <wvobject type="group" fp_name="group62">
+      <obj_property name="label">s00</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/tb_top/s00_axis_aclk_sti">
+         <obj_property name="ElementShortName">s00_axis_aclk_sti</obj_property>
+         <obj_property name="ObjectShortName">s00_axis_aclk_sti</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_top/s00_axis_aresetn_sti">
+         <obj_property name="ElementShortName">s00_axis_aresetn_sti</obj_property>
+         <obj_property name="ObjectShortName">s00_axis_aresetn_sti</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_top/s00_axis_tready_obs">
+         <obj_property name="ElementShortName">s00_axis_tready_obs</obj_property>
+         <obj_property name="ObjectShortName">s00_axis_tready_obs</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_top/s00_axis_tdata_sti">
+         <obj_property name="ElementShortName">s00_axis_tdata_sti[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axis_tdata_sti[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_top/s00_axis_tstrb_sti">
+         <obj_property name="ElementShortName">s00_axis_tstrb_sti[3:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axis_tstrb_sti[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_top/s00_axis_tvalid_sti">
+         <obj_property name="ElementShortName">s00_axis_tvalid_sti</obj_property>
+         <obj_property name="ObjectShortName">s00_axis_tvalid_sti</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_top/s00_axis_tlast_sti">
+         <obj_property name="ElementShortName">s00_axis_tlast_sti</obj_property>
+         <obj_property name="ObjectShortName">s00_axis_tlast_sti</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_top/s00_axis_tid_sti">
+         <obj_property name="ElementShortName">s00_axis_tid_sti[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axis_tid_sti[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_top/s00_axis_tdest_sti">
+         <obj_property name="ElementShortName">s00_axis_tdest_sti[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axis_tdest_sti[4:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group64">
+      <obj_property name="label">DUT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="group" fp_name="group71">
+         <obj_property name="label">s00</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/S00_AXIS_inst/S_AXIS_ACLK">
+            <obj_property name="ElementShortName">S_AXIS_ACLK</obj_property>
+            <obj_property name="ObjectShortName">S_AXIS_ACLK</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/S00_AXIS_inst/S_AXIS_ARESETN">
+            <obj_property name="ElementShortName">S_AXIS_ARESETN</obj_property>
+            <obj_property name="ObjectShortName">S_AXIS_ARESETN</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/S00_AXIS_inst/S_AXIS_TREADY">
+            <obj_property name="ElementShortName">S_AXIS_TREADY</obj_property>
+            <obj_property name="ObjectShortName">S_AXIS_TREADY</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/S00_AXIS_inst/S_AXIS_TDATA">
+            <obj_property name="ElementShortName">S_AXIS_TDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S_AXIS_TDATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/S00_AXIS_inst/S_AXIS_TSTRB">
+            <obj_property name="ElementShortName">S_AXIS_TSTRB[3:0]</obj_property>
+            <obj_property name="ObjectShortName">S_AXIS_TSTRB[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/S00_AXIS_inst/S_AXIS_TLAST">
+            <obj_property name="ElementShortName">S_AXIS_TLAST</obj_property>
+            <obj_property name="ObjectShortName">S_AXIS_TLAST</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/S00_AXIS_inst/S_AXIS_TVALID">
+            <obj_property name="ElementShortName">S_AXIS_TVALID</obj_property>
+            <obj_property name="ObjectShortName">S_AXIS_TVALID</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/tb_top/dut_inst/S00_AXIS_inst/fsm_state_s">
+            <obj_property name="ElementShortName">fsm_state_s</obj_property>
+            <obj_property name="ObjectShortName">fsm_state_s</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/tb_top/dut_inst/S00_AXIS_inst/fsm_next_state_s">
+            <obj_property name="ElementShortName">fsm_next_state_s</obj_property>
+            <obj_property name="ObjectShortName">fsm_next_state_s</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/S00_AXIS_inst/fifo_full_i">
+            <obj_property name="ElementShortName">fifo_full_i</obj_property>
+            <obj_property name="ObjectShortName">fifo_full_i</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/S00_AXIS_inst/fifo_wren_o">
+            <obj_property name="ElementShortName">fifo_wren_o</obj_property>
+            <obj_property name="ObjectShortName">fifo_wren_o</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/S00_AXIS_inst/job_o">
+            <obj_property name="ElementShortName">job_o</obj_property>
+            <obj_property name="ObjectShortName">job_o</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group77">
+         <obj_property name="label">fifo</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/fifo_in_s">
+            <obj_property name="ElementShortName">fifo_in_s</obj_property>
+            <obj_property name="ObjectShortName">fifo_in_s</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/fifo_wren_s">
+            <obj_property name="ElementShortName">fifo_wren_s</obj_property>
+            <obj_property name="ObjectShortName">fifo_wren_s</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/fifo_full_s">
+            <obj_property name="ElementShortName">fifo_full_s</obj_property>
+            <obj_property name="ObjectShortName">fifo_full_s</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/fifo_out_s">
+            <obj_property name="ElementShortName">fifo_out_s</obj_property>
+            <obj_property name="ObjectShortName">fifo_out_s</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/fifo_rden_s">
+            <obj_property name="ElementShortName">fifo_rden_s</obj_property>
+            <obj_property name="ObjectShortName">fifo_rden_s</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/fifo_empty_s">
+            <obj_property name="ElementShortName">fifo_empty_s</obj_property>
+            <obj_property name="ObjectShortName">fifo_empty_s</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group83">
+         <obj_property name="label">controller</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/controller_inst/job_i">
+            <obj_property name="ElementShortName">job_i</obj_property>
+            <obj_property name="ObjectShortName">job_i</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/controller_inst/next_job_valid_s">
+            <obj_property name="ElementShortName">next_job_valid_s</obj_property>
+            <obj_property name="ObjectShortName">next_job_valid_s</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/controller_inst/request_next_job_s">
+            <obj_property name="ElementShortName">request_next_job_s</obj_property>
+            <obj_property name="ObjectShortName">request_next_job_s</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/controller_inst/fifo_rden_o">
+            <obj_property name="ElementShortName">fifo_rden_o</obj_property>
+            <obj_property name="ObjectShortName">fifo_rden_o</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/controller_inst/fifo_empty_i">
+            <obj_property name="ElementShortName">fifo_empty_i</obj_property>
+            <obj_property name="ObjectShortName">fifo_empty_i</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/tb_top/dut_inst/controller_inst/packet_fsm_state_s">
+            <obj_property name="ElementShortName">packet_fsm_state_s</obj_property>
+            <obj_property name="ObjectShortName">packet_fsm_state_s</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/tb_top/dut_inst/controller_inst/packet_fsm_next_state_s">
+            <obj_property name="ElementShortName">packet_fsm_next_state_s</obj_property>
+            <obj_property name="ObjectShortName">packet_fsm_next_state_s</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/controller_inst/ready_i">
+            <obj_property name="ElementShortName">ready_i</obj_property>
+            <obj_property name="ObjectShortName">ready_i</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/controller_inst/last_o">
+            <obj_property name="ElementShortName">last_o</obj_property>
+            <obj_property name="ObjectShortName">last_o</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/controller_inst/data_o">
+            <obj_property name="ElementShortName">data_o[31:0]</obj_property>
+            <obj_property name="ObjectShortName">data_o[31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/controller_inst/valid_o">
+            <obj_property name="ElementShortName">valid_o</obj_property>
+            <obj_property name="ObjectShortName">valid_o</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/controller_inst/M_AXIS_TID_o">
+            <obj_property name="ElementShortName">M_AXIS_TID_o[4:0]</obj_property>
+            <obj_property name="ObjectShortName">M_AXIS_TID_o[4:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/controller_inst/M_AXIS_TDEST_o">
+            <obj_property name="ElementShortName">M_AXIS_TDEST_o[4:0]</obj_property>
+            <obj_property name="ObjectShortName">M_AXIS_TDEST_o[4:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/controller_inst/packet_val_counter_s">
+            <obj_property name="ElementShortName">packet_val_counter_s[9:0]</obj_property>
+            <obj_property name="ObjectShortName">packet_val_counter_s[9:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/controller_inst/packet_length_s">
+            <obj_property name="ElementShortName">packet_length_s[9:0]</obj_property>
+            <obj_property name="ObjectShortName">packet_length_s[9:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/controller_inst/wait_counter_s">
+            <obj_property name="ElementShortName">wait_counter_s[9:0]</obj_property>
+            <obj_property name="ObjectShortName">wait_counter_s[9:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/controller_inst/wait_time_s">
+            <obj_property name="ElementShortName">wait_time_s[9:0]</obj_property>
+            <obj_property name="ObjectShortName">wait_time_s[9:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/controller_inst/valid_s">
+            <obj_property name="ElementShortName">valid_s</obj_property>
+            <obj_property name="ObjectShortName">valid_s</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group67">
+         <obj_property name="label">m00</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/M00_AXIS_inst/data_i">
+            <obj_property name="ElementShortName">data_i[31:0]</obj_property>
+            <obj_property name="ObjectShortName">data_i[31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/M00_AXIS_inst/valid_i">
+            <obj_property name="ElementShortName">valid_i</obj_property>
+            <obj_property name="ObjectShortName">valid_i</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/M00_AXIS_inst/last_i">
+            <obj_property name="ElementShortName">last_i</obj_property>
+            <obj_property name="ObjectShortName">last_i</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/M00_AXIS_inst/ready_o">
+            <obj_property name="ElementShortName">ready_o</obj_property>
+            <obj_property name="ObjectShortName">ready_o</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/M00_AXIS_inst/M_AXIS_TVALID">
+            <obj_property name="ElementShortName">M_AXIS_TVALID</obj_property>
+            <obj_property name="ObjectShortName">M_AXIS_TVALID</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_top/dut_inst/M00_AXIS_inst/M_AXIS_TDATA">
+            <obj_property name="ElementShortName">M_AXIS_TDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">M_AXIS_TDATA[31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/M00_AXIS_inst/M_AXIS_TLAST">
+            <obj_property name="ElementShortName">M_AXIS_TLAST</obj_property>
+            <obj_property name="ObjectShortName">M_AXIS_TLAST</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_top/dut_inst/M00_AXIS_inst/M_AXIS_TREADY">
+            <obj_property name="ElementShortName">M_AXIS_TREADY</obj_property>
+            <obj_property name="ObjectShortName">M_AXIS_TREADY</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group63">
+      <obj_property name="label">m00</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/tb_top/m00_axis_aclk_sti">
+         <obj_property name="ElementShortName">m00_axis_aclk_sti</obj_property>
+         <obj_property name="ObjectShortName">m00_axis_aclk_sti</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_top/m00_axis_aresetn_sti">
+         <obj_property name="ElementShortName">m00_axis_aresetn_sti</obj_property>
+         <obj_property name="ObjectShortName">m00_axis_aresetn_sti</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_top/m00_axis_tready_sti">
+         <obj_property name="ElementShortName">m00_axis_tready_sti</obj_property>
+         <obj_property name="ObjectShortName">m00_axis_tready_sti</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_top/m00_axis_tdata_obs">
+         <obj_property name="ElementShortName">m00_axis_tdata_obs[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m00_axis_tdata_obs[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_top/m00_axis_tstrb_obs">
+         <obj_property name="ElementShortName">m00_axis_tstrb_obs[3:0]</obj_property>
+         <obj_property name="ObjectShortName">m00_axis_tstrb_obs[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_top/m00_axis_tvalid_obs">
+         <obj_property name="ElementShortName">m00_axis_tvalid_obs</obj_property>
+         <obj_property name="ObjectShortName">m00_axis_tvalid_obs</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_top/m00_axis_tlast_obs">
+         <obj_property name="ElementShortName">m00_axis_tlast_obs</obj_property>
+         <obj_property name="ObjectShortName">m00_axis_tlast_obs</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_top/m00_axis_tid_obs">
+         <obj_property name="ElementShortName">m00_axis_tid_obs[4:0]</obj_property>
+         <obj_property name="ObjectShortName">m00_axis_tid_obs[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_top/m00_axis_tdest_obs">
+         <obj_property name="ElementShortName">m00_axis_tdest_obs[4:0]</obj_property>
+         <obj_property name="ObjectShortName">m00_axis_tdest_obs[4:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

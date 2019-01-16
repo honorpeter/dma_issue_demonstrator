@@ -1,0 +1,36 @@
+07:18:24 **** Auto Build of configuration Debug for project rw_files ****
+make all 
+Building file: ../src/main.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I../../standalone_bsp_0/psu_cortexa53_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:74:7: warning: unused variable 'NumBytesWritten' [-Wunused-variable]
+  UINT NumBytesWritten;
+       ^~~~~~~~~~~~~~~
+../src/main.c:72:5: warning: unused variable 'SourceAddress' [-Wunused-variable]
+  u8 SourceAddress[1000] __attribute__ ((aligned(32)));
+     ^~~~~~~~~~~~~
+../src/main.c:68:6: warning: unused variable 'Platform' [-Wunused-variable]
+  u32 Platform;
+      ^~~~~~~~
+Finished building: ../src/main.c
+ 
+Building file: ../src/platform.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../standalone_bsp_0/psu_cortexa53_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building target: rw_files.elf
+Invoking: ARM v8 gcc linker
+aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/psu_cortexa53_0/lib -o "rw_files.elf"  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group
+Finished building target: rw_files.elf
+ 
+Invoking: ARM v8 Print Size
+aarch64-none-elf-size rw_files.elf  |tee "rw_files.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  62932	   2464	  22344	  87740	  156bc	rw_files.elf
+Finished building: rw_files.elf.size
+ 
+
+07:18:25 Build Finished (took 524ms)
+

@@ -1,0 +1,47 @@
+------- DMA issue demonstrator --------                                         
+--- Entering main() ---                                                         
+DMA transfers in progress...                                                    
+Try no 0 successful                                                             
+Try no 1 successful                                                             
+Try no 2 successful                                                             
+Try no 3 successful                                                             
+Try no 4 successful                                                             
+Try no 5 successful                                                             
+Try no 6 successful                                                             
+Try no 7 successful                                                             
+Try no 8 successful                                                             
+Try no 9 successful                                                             
+Try no 10 successful                                                            
+Try no 11 successful                                                            
+Try no 12 successful                                                            
+Try no 13 successful                                                            
+Try no 14 successful                                                            
+Try no 15 successful                                                            
+Try no 16 successful                                                            
+Transfers failed at try no 17                                                   
+TxDone=107/1000, RxDone=34/10000                                                
+                                                                                
+After sending all TX BDs:                                                       
+Channel TX 0.0:                                                                 
+Dump registers A0000000:                                                        
+Control REG: 64017003                                                           
+Status REG: 00010008                                                            
+Cur BD REG: 4310B4C0                                                            
+Tail BD REG: 431193C0                                                           
+                                                                                
+Channel RX 0.0:                                                                 
+Dump registers A0000030:                                                        
+Control REG: 64017003                                                           
+Status REG: 0001000A                                                            
+Cur BD REG: 41530640                                                            
+Tail BD REG: 4157E400                                                           
+                                                                                
+Channel RX 0.1:                                                                 
+Dump registers A0000030:                                                        
+Control REG: 64017003                                                           
+Status REG: 0001000A                                                            
+Cur BD REG: 42530640                                                            
+Tail BD REG: 4257E400                                                           
+                                                                                
+Transfers failed at try no 17                                                   
+--- Exiting main() --- 

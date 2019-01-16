@@ -1,0 +1,290 @@
+/**
+ * Description:
+ * This program allows to show an issue with the AXI DMA: it may happen that the AXI DMA does not fetch
+ * the next RX (S2MM) buffer descriptor as it should. The DMA accepts 4 data beats from the AXI-Stream (as it should),
+ * deasserts TREADY, but never fetches the buffer descriptor related to the new AXI-Stream packet.
+ *
+ * The hardware design implements:
+ * - an AXI DMA, with Scatter-Gather and Multichannel modes, with 2 channels for both
+ * TX and RX.
+ * - A MM2S AXI-Stream Interconnect with 1 slave interface connected to the MM2S interface of the DMA
+ * and 2 master interfaces, each connected to a dma_killer block.
+ * - A S2MM AXI-Stream Interconnect with 2 slave interfaces, each connected to a dma_killer block
+ * and 1 master interface connected to the DMA.
+ * - 2 dma_killer custom IPs. Only the one on channel 0 is used in this program. See description of the dma_killer
+ * behaviour below.
+ *
+ * The dma_killer custom IP receives jobs on its AXI-Stream slave interface. Each jobs consist in an AXI-Stream
+ * packet to generate from the master interface, with a desired pause before the next packet.
+ * An incoming packet can contain several jobs, and must contain a multiple of 3 32-bits words. Each group of
+ * 3 successive 32-bits words form a job:
+ * - The first word is the length of the packet to generate, in 32-bits words. Maximum 1023 words.
+ * - The second word is the pause between the current packet and the next one, in clock cycles. Maximum 1023 cycles.
+ * - The third word is the TID and TDEST value of the packet to generate. In this example, it must be 0 or 1.
+ * The dma_killer block includes an internal FIFO which allows to store 1024 jobs.
+ *
+ * IMPORTANT NOTE:
+ * Only 1 GB of the DDR must be "visible" from the linker script. In the second GB of the DDR, buffers
+ * (RX_BD_SPACE_BASE, TX_BD_SPACE_BASE, RX_BUFFER_BASE, TX_BUFFER_BASE in file dma_management.h) are manually
+ * allocated as constants and marked as "uncacheable" (in the beginning of the main function).
+ *
+ * Author:	Matthieu Zimmermann
+ * Date:	15.01.2019
+ */
+
+
+/***************************** Include Files *********************************/
+#include "xtime_l.h"
+#include "sleep.h"
+#ifdef __aarch64__
+#include "xil_mmu.h"  // Necessary to define memory spaces as uncacheable with Xil_SetTlbAttributes(...)
+#endif
+
+// Includes of the project
+#include "dma_management.h"
+#include "common.h"
+
+/************************** Variable Definitions *****************************/
+
+static INTC Intc;	/* Instance of the Interrupt Controller */
+
+/*********************** Functions prototypes *******************************/
+/**
+ * This function launches DMA transfers from the dma_killer block: it sends it TX packets, containing information
+ * about the packets it must generate. For the description of the dma_killer block, see description at the beginning
+ * of main.c.
+ * Parameters:
+ * - AxiDmaInstPtr: pointer to the instance of the AXI DMA
+ * - nb_packets: total number of packets emitted by the dma_killer block. Must be a multiple of NB_RX_PER_TX (defined in common.h)
+ * - length: length, in words of S2MM width (i.e. 32 bits) of each packet transmitted by the dma_killer block
+ * - wait_time: time between two packets, in clock cycles
+ * - nb_tdest: number of different TDEST values for packets emitted by the dma_killer block
+ */
+int dma_transfers(XAxiDma* AxiDmaInstPtr, int nb_packets, int length, int wait_time, int nb_tdest);
+
+/************************** Main function ***********************************/
+int main(void)
+{
+	int Status;
+	XAxiDma_Config* Config;
+
+	// Define BD spaces as uncacheable. For addresses under 4GB (which is the case here), the block size is 2MB (0x200000).
+	for (uint8_t* ptr = (uint8_t*)TX_BD_SPACE_BASE; ptr <= (uint8_t*)TX_BD_SPACE_HIGH; ptr += 0x200000U) {
+		Xil_SetTlbAttributes((UINTPTR)ptr, MARK_UNCACHEABLE);
+	}
+	for (uint8_t* ptr = (uint8_t*)RX_BD_SPACE_BASE; ptr <= (uint8_t*)RX_BD_SPACE_HIGH; ptr += 0x200000U) {
+		Xil_SetTlbAttributes((UINTPTR)ptr, MARK_UNCACHEABLE);
+	}
+
+	// Define data buffers as uncacheable. For addresses under 4GB (which is the case here), the block size is 2MB (0x200000).
+	for (uint8_t* ptr = (uint8_t*)RX_BUFFER_BASE; ptr <= (uint8_t*)RX_BUFFER_HIGH; ptr += 0x200000U) {
+		Xil_SetTlbAttributes((UINTPTR)ptr, MARK_UNCACHEABLE);
+	}
+	for (uint8_t* ptr = (uint8_t*)TX_BUFFER_BASE; ptr <= (uint8_t*)TX_BUFFER_HIGH; ptr += 0x200000U) {
+		Xil_SetTlbAttributes((UINTPTR)ptr, MARK_UNCACHEABLE);
+	}
+
+	xil_printf("\r\n------- DMA issue demonstrator --------\r\n");
+	xil_printf("--- Entering main() --- \r\n");
+
+	// Get the configuration of the AXI DMA
+    Config = XAxiDma_LookupConfig(DMA_DEV_ID);
+	if (!Config) {
+		xil_printf("No config found for %d\r\n", DMA_DEV_ID);
+
+		return XST_FAILURE;
+	}
+
+    /* Initialize DMA engine */
+    XAxiDma_CfgInitialize(&AxiDma, Config);
+
+    // Make sure the AXI DMA has Scatter-Gather mode enabled
+    if(!XAxiDma_HasSg(&AxiDma)) {
+		xil_printf("Device configured as Simple mode\r\n");
+		return XST_FAILURE;
+	}
+
+    /* Set up TX/RX channels to be ready to transmit and receive packets */
+	Status = TxSetup(&AxiDma);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Failed TX setup\r\n");
+		return XST_FAILURE;
+	}
+
+    Status = RxSetup(&AxiDma);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Failed RX setup\r\n");
+		return XST_FAILURE;
+	}
+
+    /* Set up Interrupt system  */
+	Status = SetupIntrSystem(&Intc, &AxiDma, DMA_TX_INTR_ID,
+				DMA_RX_INTR_ID);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Failed intr setup\r\n");
+		return XST_FAILURE;
+	}
+
+	xil_printf("DMA transfers in progress...\r\n");
+	// NOT WORKING
+	/*Status = dma_transfers(	&AxiDma,  // AxiDmaInstPtr
+							10000, // nb_packets
+							1000, // length
+							100, // wait_time
+							2); // nb_tdest */
+
+	// WORKING
+	Status = dma_transfers(	&AxiDma,  // AxiDmaInstPtr
+							10000, // nb_packets
+							1000, // length
+							120, // wait_time
+							2); // nb_tdest
+
+	// Dump registers of the AXI DMA
+	xil_printf("\r\nDump registers of the DMA: \r\n");
+	xil_printf("Channel TX 0.0:\r\n");
+		XAxiDma_BdRingDumpRegs(XAxiDma_GetTxRing(&AxiDma));
+	xil_printf("Channel RX 0.0:\r\n");
+	XAxiDma_BdRingDumpRegs(XAxiDma_GetRxIndexRing(&AxiDma, 0));
+	xil_printf("Channel RX 0.1:\r\n");
+	XAxiDma_BdRingDumpRegs(XAxiDma_GetRxIndexRing(&AxiDma, 1));
+
+    if (Status == XST_SUCCESS) {
+    	xil_printf("All transfers were successful.\r\n");
+    } else {
+    	xil_printf("Transfers failed at try no %d\r\n", try_nb_fail);
+
+#ifdef DISP_NB_INTERRUPTS
+    	xil_printf("stat_tx_interrupts=%d\r\n", stat_tx_interrupts);
+    	xil_printf("stat_rx_interrupts=%d\r\n", stat_rx_interrupts);
+#endif
+    }
+
+    /* Disable TX and RX Ring interrupts */
+    DisableIntrSystem(&Intc, DMA_TX_INTR_ID, DMA_RX_INTR_ID);
+
+	xil_printf("--- Exiting main() --- \r\n");
+
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	return XST_SUCCESS;
+}
+
+int dma_transfers(XAxiDma* AxiDmaInstPtr, int nb_packets, int length, int wait_time, int nb_tdest)
+{
+	int Status;
+	int TxTransfers; // Number of TX transfers (one per descriptor)
+	int RxTransfers; // Number of RX transfers (one per descriptor)
+	u32* TxStartAddr;
+	u32* RxStartAddr;
+	u32 wait_count = 0; // Counter when the program is waiting for the transfers to complete
+	u32 tdest = 0;
+
+	TxStartAddr = (u32*)TX_BUFFER_BASE;
+	RxStartAddr = (u32*)RX_BUFFER_BASE;
+
+	tdest = 0;
+
+	// Prepare a first RX descriptor for each RX channel, so that each channel has always 1 remaining descriptor
+	for (int i = 0; i < NB_RX_CHANNELS; i++) {
+		Status = receivePacket(AxiDmaInstPtr, i, (u8*)RxStartAddr, 4*length);
+		if (Status != XST_SUCCESS) {
+			xil_printf("Failed to transmit reception of RX packet.\r\n");
+			return XST_FAILURE;
+		}
+	}
+
+	// Make NB_TRY tries of transfers
+	for (int try_nb = 0; try_nb < NB_TRY; try_nb++) {
+
+		// Initialize flags before start transfers
+		TxDone = 0;
+		RxDone = 0;
+		Error = 0;
+
+		// Initialize the number of prepared transfers
+		TxTransfers = 0;
+		RxTransfers = 0;
+
+		// Prepare RX descriptors
+		for (int i = 0; i < nb_packets/NB_RX_PER_TX; i++) {
+			for (int j = 0; j < NB_RX_PER_TX; j++) {
+				Status = receivePacket(AxiDmaInstPtr, tdest, (u8*)RxStartAddr, 4*length);
+				if (Status != XST_SUCCESS) {
+					xil_printf("Failed to transmit reception of RX packet.\r\n");
+					return XST_FAILURE;
+				}
+				RxTransfers += 1;
+			}
+
+			tdest = (tdest + 1) % nb_tdest;
+		}
+
+		tdest = 0;
+
+
+		/*xil_printf("pause: enable trigger now!\r\n");
+		sleep(3);*/
+
+		// Prepare TX descriptors
+		for (int i = 0; i < nb_packets/NB_RX_PER_TX; i++) {
+			for (int j = 0; j < NB_RX_PER_TX; j++) {
+				TxStartAddr[j*TX_PACKET_LENGTH+0] = length;
+				TxStartAddr[j*TX_PACKET_LENGTH+1] = wait_time;
+				TxStartAddr[j*TX_PACKET_LENGTH+2] = tdest;
+
+				tdest = (tdest + 1) % nb_tdest;
+			}
+
+			Xil_DCacheFlushRange((INTPTR)TxStartAddr, NB_RX_PER_TX*TX_PACKET_LENGTH*4); // Flush cache
+
+			Status = sendPacket(AxiDmaInstPtr, (u8*)TxStartAddr, NB_RX_PER_TX*TX_PACKET_LENGTH*4, 0, 0);
+			if (Status != XST_SUCCESS) {
+				xil_printf("Failed to transmit packet.\r\n");
+				return XST_FAILURE;
+			}
+
+			// Increment the count of transfers
+			TxTransfers += 1;
+
+			TxStartAddr += NB_RX_PER_TX*TX_PACKET_LENGTH;
+		}
+#ifdef DISP_NB_TRANSFERS
+		xil_printf("TxTransfers = %d\r\n", TxTransfers);
+		xil_printf("RxTransfers = %d\r\n\r\n", RxTransfers);
+#endif
+
+		wait_count = 0;
+
+		// Wait until transfers are finished
+		while (((TxDone < TxTransfers) ||
+			(RxDone < RxTransfers)) && !Error) {
+			// NOP
+			usleep(1000);
+			wait_count++;
+			if (wait_count >= 3000) {
+				xil_printf("Transfers failed at try no %d\r\n", try_nb);
+				try_nb_fail = try_nb;
+				xil_printf("TxDone=%d/%d, RxDone=%d/%d\r\n", TxDone, TxTransfers, RxDone, RxTransfers);
+				return XST_FAILURE;
+			}
+		}
+
+
+		if (Error) {
+			xil_printf("Failed. Transmit%s done, "
+				"receive%s done\r\n", TxDone? "":" not",
+					RxDone? "":" not");
+			return XST_FAILURE;
+		}
+
+		xil_printf("Try no %d successful\r\n", try_nb);
+	}
+
+	return XST_SUCCESS;
+}
+
+
+

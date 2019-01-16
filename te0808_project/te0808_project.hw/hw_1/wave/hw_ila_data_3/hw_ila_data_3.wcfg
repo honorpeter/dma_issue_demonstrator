@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.hw/hw_1/wave/hw_ila_data_3/hw_ila_data_3.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="16384001fs"></ZoomEndTime>
+      <Cursor1Time time="8099000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="138"></NameColumnWidth>
+      <ValueColumnWidth column_width="84"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="8" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject type="logic" fp_name="zusys_i/S00_AXIS_2_TREADY">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">zusys_i/S00_AXIS_2_TREADY</obj_property>
+      <obj_property name="ObjectShortName">S00_AXIS_2_TREADY</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="label">TREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/S00_AXIS_2_TDATA">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">zusys_i/S00_AXIS_2_TDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S00_AXIS_2_TDATA[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="label">TDATA</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="zusys_i/S00_AXIS_2_TVALID">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">zusys_i/S00_AXIS_2_TVALID</obj_property>
+      <obj_property name="ObjectShortName">S00_AXIS_2_TVALID</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="label">TVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="zusys_i/S00_AXIS_2_TLAST">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">zusys_i/S00_AXIS_2_TLAST</obj_property>
+      <obj_property name="ObjectShortName">S00_AXIS_2_TLAST</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="label">TLAST</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/S00_AXIS_2_TUSER">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">zusys_i/S00_AXIS_2_TUSER[3:0]</obj_property>
+      <obj_property name="ObjectShortName">S00_AXIS_2_TUSER[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="label">TUSER</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/S00_AXIS_2_TKEEP">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">zusys_i/S00_AXIS_2_TKEEP[3:0]</obj_property>
+      <obj_property name="ObjectShortName">S00_AXIS_2_TKEEP[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="label">TKEEP</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/S00_AXIS_2_TDEST">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">zusys_i/S00_AXIS_2_TDEST[4:0]</obj_property>
+      <obj_property name="ObjectShortName">S00_AXIS_2_TDEST[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="label">TDEST</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/S00_AXIS_2_TID">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">zusys_i/S00_AXIS_2_TID[4:0]</obj_property>
+      <obj_property name="ObjectShortName">S00_AXIS_2_TID[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="label">TID</obj_property>
+   </wvobject>
+</wave_config>

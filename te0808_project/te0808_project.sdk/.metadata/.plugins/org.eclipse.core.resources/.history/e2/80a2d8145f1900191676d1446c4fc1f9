@@ -1,0 +1,25 @@
+#ifndef COMMON_H
+#define COMMON_H
+
+/* -------------------------------------------------------------
+ * Parameters of the design
+ * ------------------------------------------------------------- */
+
+#define MM2S_WIDTH		4
+#define S2MM_WIDTH		4
+#define TX_PACKET_LENGTH 3
+#define NB_RX_CHANNELS 2
+
+
+#define NB_RX_PER_TX 10 // Number of RX packets to generate by dma_killer block transmitted in each TX packet.
+
+#define NB_TRY 100 // Number of tries of DMA transmissions
+
+/* -------------------------------------------------------------
+ * Debug and test options
+ * ------------------------------------------------------------- */
+
+//#define DISP_NB_TRANSFERS // Uncomment to display the number of transfers of each try
+//#define DISP_NB_INTERRUPTS // Uncomment to display the count of the number of the interrupts
+
+#endif

@@ -1,0 +1,447 @@
+
+*** Running vivado
+    with args -log top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+
+
+****** Vivado v2017.4 (64-bit)
+  **** SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+  **** IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Sourcing tcl script '/opt/Xilinx/Vivado/2017.4/scripts/Vivado_init.tcl'
+1 Beta devices matching pattern found, 1 enabled.
+Set Board Part RepoPath: /home/matt/Git/te0808/board_files
+source top.tcl -notrace
+Command: synth_design -top top -part xczu9eg-ffvc900-1-i-es1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu9eg-es1'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu9eg-es1'
+INFO: [Common 17-1540] The version limit for your license is '2018.06' and has expired for new software. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 27509 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1367.340 ; gain = 0.000 ; free physical = 2943 ; free virtual = 20858
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/top.vhd:38]
+INFO: [Synth 8-3491] module 'S00_AXIS' declared at '/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/S00_AXIS.vhd:8' bound to instance 'S00_AXIS_inst' of component 'S00_AXIS' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/top.vhd:160]
+INFO: [Synth 8-638] synthesizing module 'S00_AXIS' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/S00_AXIS.vhd:31]
+INFO: [Synth 8-256] done synthesizing module 'S00_AXIS' (1#1) [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/S00_AXIS.vhd:31]
+INFO: [Synth 8-3491] module 'fifo_generator_0' declared at '/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.runs/synth_1/.Xil/Vivado-27487-matt-HP-EliteBook-Folio-9470m/realtime/fifo_generator_0_stub.v:6' bound to instance 'fifo_inst' of component 'fifo_generator_0' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/top.vhd:175]
+INFO: [Synth 8-638] synthesizing module 'fifo_generator_0' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.runs/synth_1/.Xil/Vivado-27487-matt-HP-EliteBook-Folio-9470m/realtime/fifo_generator_0_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'fifo_generator_0' (2#1) [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.runs/synth_1/.Xil/Vivado-27487-matt-HP-EliteBook-Folio-9470m/realtime/fifo_generator_0_stub.v:6]
+INFO: [Synth 8-3491] module 'controller' declared at '/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/controller.vhd:28' bound to instance 'controller_inst' of component 'controller' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/top.vhd:195]
+INFO: [Synth 8-638] synthesizing module 'controller' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/controller.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'controller' (3#1) [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/controller.vhd:44]
+INFO: [Synth 8-3491] module 'M00_AXIS' declared at '/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/M00_AXIS.vhd:8' bound to instance 'M00_AXIS_inst' of component 'M00_AXIS' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/top.vhd:211]
+INFO: [Synth 8-638] synthesizing module 'M00_AXIS' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/M00_AXIS.vhd:37]
+INFO: [Synth 8-256] done synthesizing module 'M00_AXIS' (4#1) [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/M00_AXIS.vhd:37]
+INFO: [Synth 8-256] done synthesizing module 'top' (5#1) [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/top.vhd:38]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[31]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[30]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[29]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[28]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[27]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[26]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[25]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[24]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[23]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[22]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[21]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[20]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[19]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[18]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[17]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[16]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[15]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[14]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[13]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[12]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[11]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TDATA[10]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TSTRB[3]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TSTRB[2]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TSTRB[1]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TSTRB[0]
+WARNING: [Synth 8-3331] design S00_AXIS has unconnected port S_AXIS_TLAST
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[4]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[3]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[2]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[1]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[0]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[4]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[3]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[2]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[1]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1375.613 ; gain = 8.273 ; free physical = 2947 ; free virtual = 20864
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1375.613 ; gain = 8.273 ; free physical = 2947 ; free virtual = 20864
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xczu9eg-ffvc900-1-i-es1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.runs/synth_1/.Xil/Vivado-27487-matt-HP-EliteBook-Folio-9470m/dcp1/fifo_generator_0_in_context.xdc] for cell 'fifo_inst'
+Finished Parsing XDC File [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.runs/synth_1/.Xil/Vivado-27487-matt-HP-EliteBook-Folio-9470m/dcp1/fifo_generator_0_in_context.xdc] for cell 'fifo_inst'
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2075.895 ; gain = 0.000 ; free physical = 2191 ; free virtual = 20230
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 2075.895 ; gain = 708.555 ; free physical = 2242 ; free virtual = 20282
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu9eg-ffvc900-1-i-es1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 2075.895 ; gain = 708.555 ; free physical = 2242 ; free virtual = 20282
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for fifo_inst. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 2075.895 ; gain = 708.555 ; free physical = 2244 ; free virtual = 20284
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'fsm_state_s_reg' in module 'S00_AXIS'
+INFO: [Synth 8-5544] ROM "fifo_wren_o" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm_next_state_s" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm_next_state_s" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm_next_state_s" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-4471] merging register 'M_AXIS_TDEST_o_reg[4:0]' into 'M_AXIS_TID_o_reg[4:0]' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/controller.vhd:164]
+WARNING: [Synth 8-6014] Unused sequential element M_AXIS_TDEST_o_reg was removed.  [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/controller.vhd:164]
+INFO: [Synth 8-5544] ROM "valid_s" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "wait_counter_s" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element packet_val_counter_s_reg was removed.  [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/controller.vhd:167]
+WARNING: [Synth 8-6014] Unused sequential element wait_counter_s_reg was removed.  [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/controller.vhd:169]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                              000
+                  length |                              001 |                              001
+               wait_time |                              010 |                              010
+                   tdest |                              011 |                              011
+                   write |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'fsm_state_s_reg' using encoding 'sequential' in module 'S00_AXIS'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:39 . Memory (MB): peak = 2075.895 ; gain = 708.555 ; free physical = 2236 ; free virtual = 20275
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 4     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               10 Bit    Registers := 6     
+	                5 Bit    Registers := 4     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   5 Input      3 Bit        Muxes := 5     
+	  10 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 9     
+	   4 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 11    
+	   4 Input      1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module S00_AXIS 
+Detailed RTL Component Info : 
++---Registers : 
+	               10 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
++---Muxes : 
+	   5 Input      3 Bit        Muxes := 5     
+	  10 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 5     
+	   2 Input      1 Bit        Muxes := 4     
+	   4 Input      1 Bit        Muxes := 3     
+Module controller 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 4     
++---Registers : 
+	               10 Bit    Registers := 4     
+	                5 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 4     
+	   4 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 7     
+Module M00_AXIS 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+	                5 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 2520 (col length:168)
+BRAMs: 1824 (col length: RAMB18 168 RAMB36 84)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4471] merging register 'M00_AXIS_inst/M_AXIS_TDEST_reg[4:0]' into 'M00_AXIS_inst/M_AXIS_TID_reg[4:0]' [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/M00_AXIS.vhd:50]
+WARNING: [Synth 8-6014] Unused sequential element M00_AXIS_inst/M_AXIS_TDEST_reg was removed.  [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/M00_AXIS.vhd:50]
+WARNING: [Synth 8-6014] Unused sequential element controller_inst/wait_counter_s_reg was removed.  [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/controller.vhd:169]
+WARNING: [Synth 8-6014] Unused sequential element controller_inst/packet_val_counter_s_reg was removed.  [/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/controller.vhd:167]
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[31] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[30] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[29] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[28] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[27] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[26] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[25] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[24] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[23] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[22] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[21] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[20] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[19] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[18] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[17] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[16] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[15] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[14] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[13] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[12] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[11] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tdata[10] driven by constant 0
+WARNING: [Synth 8-3917] design top has port m00_axis_tstrb[3] driven by constant 1
+WARNING: [Synth 8-3917] design top has port m00_axis_tstrb[2] driven by constant 1
+WARNING: [Synth 8-3917] design top has port m00_axis_tstrb[1] driven by constant 1
+WARNING: [Synth 8-3917] design top has port m00_axis_tstrb[0] driven by constant 1
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[31]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[30]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[29]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[28]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[27]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[26]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[25]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[24]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[23]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[22]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[21]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[20]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[19]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[18]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[17]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[16]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[15]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[14]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[13]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[12]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[11]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdata[10]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tstrb[3]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tstrb[2]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tstrb[1]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tstrb[0]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tlast
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[4]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[3]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[2]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[1]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tid[0]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[4]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[3]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[2]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[1]
+WARNING: [Synth 8-3331] design top has unconnected port s00_axis_tdest[0]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:40 . Memory (MB): peak = 2075.895 ; gain = 708.555 ; free physical = 2217 ; free virtual = 20259
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:01:15 . Memory (MB): peak = 2497.113 ; gain = 1129.773 ; free physical = 1641 ; free virtual = 19714
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:01:15 . Memory (MB): peak = 2498.113 ; gain = 1130.773 ; free physical = 1641 ; free virtual = 19713
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:45 ; elapsed = 00:01:15 . Memory (MB): peak = 2517.145 ; gain = 1149.805 ; free physical = 1668 ; free virtual = 19741
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:01:16 . Memory (MB): peak = 2517.145 ; gain = 1149.805 ; free physical = 1665 ; free virtual = 19738
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:01:16 . Memory (MB): peak = 2517.145 ; gain = 1149.805 ; free physical = 1665 ; free virtual = 19738
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:46 ; elapsed = 00:01:16 . Memory (MB): peak = 2517.145 ; gain = 1149.805 ; free physical = 1665 ; free virtual = 19738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:46 ; elapsed = 00:01:16 . Memory (MB): peak = 2517.145 ; gain = 1149.805 ; free physical = 1665 ; free virtual = 19738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:46 ; elapsed = 00:01:16 . Memory (MB): peak = 2517.145 ; gain = 1149.805 ; free physical = 1665 ; free virtual = 19738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:46 ; elapsed = 00:01:16 . Memory (MB): peak = 2517.145 ; gain = 1149.805 ; free physical = 1665 ; free virtual = 19738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+-----------------+----------+
+|      |BlackBox name    |Instances |
++------+-----------------+----------+
+|1     |fifo_generator_0 |         1|
++------+-----------------+----------+
+
+Report Cell Usage: 
++------+-----------------+------+
+|      |Cell             |Count |
++------+-----------------+------+
+|1     |fifo_generator_0 |     1|
+|2     |BUFG             |     2|
+|3     |LUT1             |     5|
+|4     |LUT2             |     7|
+|5     |LUT3             |     8|
+|6     |LUT4             |    16|
+|7     |LUT5             |    12|
+|8     |LUT6             |    26|
+|9     |FDRE             |    93|
+|10    |IBUF             |    16|
+|11    |OBUF             |    49|
++------+-----------------+------+
+
+Report Instance Areas: 
++------+------------------+-----------+------+
+|      |Instance          |Module     |Cells |
++------+------------------+-----------+------+
+|1     |top               |           |   263|
+|2     |  M00_AXIS_inst   |M00_AXIS   |    20|
+|3     |  S00_AXIS_inst   |S00_AXIS   |    37|
+|4     |  controller_inst |controller |   110|
++------+------------------+-----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:46 ; elapsed = 00:01:16 . Memory (MB): peak = 2517.145 ; gain = 1149.805 ; free physical = 1665 ; free virtual = 19737
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 69 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:36 ; elapsed = 00:00:55 . Memory (MB): peak = 2517.145 ; gain = 449.523 ; free physical = 1701 ; free virtual = 19774
+Synthesis Optimization Complete : Time (s): cpu = 00:00:46 ; elapsed = 00:01:16 . Memory (MB): peak = 2517.152 ; gain = 1149.805 ; free physical = 1706 ; free virtual = 19779
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 18 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 18 instances were transformed.
+  BUFG => BUFGCE: 2 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 16 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+36 Infos, 106 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:49 ; elapsed = 00:01:19 . Memory (MB): peak = 2538.145 ; gain = 1170.812 ; free physical = 1675 ; free virtual = 19748
+INFO: [Common 17-1381] The checkpoint '/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.runs/synth_1/top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.27 ; elapsed = 00:00:00.32 . Memory (MB): peak = 2562.156 ; gain = 0.000 ; free physical = 1675 ; free virtual = 19748
+INFO: [Common 17-206] Exiting Vivado at Sun Jan 13 16:36:28 2019...

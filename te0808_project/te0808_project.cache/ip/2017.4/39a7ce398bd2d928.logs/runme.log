@@ -1,0 +1,337 @@
+
+*** Running vivado
+    with args -log zusys_axis_live_audio_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source zusys_axis_live_audio_0_0.tcl
+
+
+****** Vivado v2017.4 (64-bit)
+  **** SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+  **** IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Sourcing tcl script '/opt/Xilinx/Vivado/2017.4/scripts/Vivado_init.tcl'
+1 Beta devices matching pattern found, 1 enabled.
+Set Board Part RepoPath: /home/matt/Git/te0808/board_files
+source zusys_axis_live_audio_0_0.tcl -notrace
+Command: synth_design -top zusys_axis_live_audio_0_0 -part xczu9eg-ffvc900-1-i-es1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu9eg-es1'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu9eg-es1'
+INFO: [Common 17-1540] The version limit for your license is '2018.06' and has expired for new software. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 16917 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1370.332 ; gain = 0.000 ; free physical = 225 ; free virtual = 17529
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'zusys_axis_live_audio_0_0' [/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.srcs/sources_1/bd/zusys/ip/zusys_axis_live_audio_0_0/synth/zusys_axis_live_audio_0_0.vhd:76]
+	Parameter C_USE_AUDIO_IN bound to: 0 - type: bool 
+	Parameter C_USE_AUDIO_OUT bound to: 1 - type: bool 
+INFO: [Synth 8-3491] module 'axis_live_audio_v1_0' declared at '/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.srcs/sources_1/bd/zusys/ipshared/5e77/hdl/axis_live_audio_v1_0.vhd:9' bound to instance 'U0' of component 'axis_live_audio_v1_0' [/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.srcs/sources_1/bd/zusys/ip/zusys_axis_live_audio_0_0/synth/zusys_axis_live_audio_0_0.vhd:123]
+INFO: [Synth 8-638] synthesizing module 'axis_live_audio_v1_0' [/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.srcs/sources_1/bd/zusys/ipshared/5e77/hdl/axis_live_audio_v1_0.vhd:37]
+	Parameter C_USE_AUDIO_IN bound to: 0 - type: bool 
+	Parameter C_USE_AUDIO_OUT bound to: 1 - type: bool 
+INFO: [Synth 8-256] done synthesizing module 'axis_live_audio_v1_0' (1#1) [/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.srcs/sources_1/bd/zusys/ipshared/5e77/hdl/axis_live_audio_v1_0.vhd:37]
+INFO: [Synth 8-256] done synthesizing module 'zusys_axis_live_audio_0_0' (2#1) [/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.srcs/sources_1/bd/zusys/ip/zusys_axis_live_audio_0_0/synth/zusys_axis_live_audio_0_0.vhd:76]
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port axis_aclk
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port axis_aresetn
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port s_axis_tdata[31]
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port s_axis_tdata[30]
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port s_axis_tdata[29]
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port s_axis_tdata[28]
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port s_axis_tdata[3]
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port s_axis_tdata[2]
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port s_axis_tdata[1]
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port s_axis_tdata[0]
+WARNING: [Synth 8-3331] design axis_live_audio_v1_0 has unconnected port m_axis_tready
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 1379.613 ; gain = 9.281 ; free physical = 172 ; free virtual = 17448
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1379.613 ; gain = 9.281 ; free physical = 215 ; free virtual = 17493
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xczu9eg-ffvc900-1-i-es1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2076.270 ; gain = 0.000 ; free physical = 953 ; free virtual = 10911
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:49 ; elapsed = 00:02:13 . Memory (MB): peak = 2076.270 ; gain = 705.938 ; free physical = 303 ; free virtual = 10945
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu9eg-ffvc900-1-i-es1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:49 ; elapsed = 00:02:13 . Memory (MB): peak = 2076.270 ; gain = 705.938 ; free physical = 303 ; free virtual = 10945
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:49 ; elapsed = 00:02:13 . Memory (MB): peak = 2076.270 ; gain = 705.938 ; free physical = 304 ; free virtual = 10947
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5544] ROM "m_axis_tvalid" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "lrclk_sr" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:50 ; elapsed = 00:02:13 . Memory (MB): peak = 2076.270 ; gain = 705.938 ; free physical = 320 ; free virtual = 10967
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---XORs : 
+	  24 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               24 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   3 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 2     
+	   3 Input     31 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module axis_live_audio_v1_0 
+Detailed RTL Component Info : 
++---XORs : 
+	  24 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               24 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   3 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 2     
+	   3 Input     31 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 2520 (col length:168)
+BRAMs: 1824 (col length: RAMB18 168 RAMB36 84)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3917] design zusys_axis_live_audio_0_0 has port s_axis_tready driven by constant 1
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port axis_aclk
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port axis_aresetn
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port s_axis_tdata[31]
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port s_axis_tdata[30]
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port s_axis_tdata[29]
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port s_axis_tdata[28]
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port s_axis_tdata[3]
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port s_axis_tdata[2]
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port s_axis_tdata[1]
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port s_axis_tdata[0]
+WARNING: [Synth 8-3331] design zusys_axis_live_audio_0_0 has unconnected port m_axis_tready
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/transmit_data_reg[0] )
+INFO: [Synth 8-3886] merging instance 'U0/m_axis_tdata_reg[0]' (FDRE) to 'U0/m_axis_tdata_reg[2]'
+INFO: [Synth 8-3886] merging instance 'U0/m_axis_tdata_reg[1]' (FDSE) to 'U0/m_axis_tdata_reg[28]'
+INFO: [Synth 8-3886] merging instance 'U0/m_axis_tdata_reg[2]' (FDRE) to 'U0/m_axis_tdata_reg[3]'
+INFO: [Synth 8-3886] merging instance 'U0/m_axis_tdata_reg[3]' (FDRE) to 'U0/m_axis_tdata_reg[29]'
+INFO: [Synth 8-3886] merging instance 'U0/m_axis_tdata_reg[28]' (FDSE) to 'U0/m_axis_tdata_reg[30]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/m_axis_tdata_reg[29] )
+INFO: [Synth 8-3332] Sequential element (U0/m_axis_tdata_reg[29]) is unused and will be removed from module zusys_axis_live_audio_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/transmit_data_reg[7]) is unused and will be removed from module zusys_axis_live_audio_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/transmit_data_reg[6]) is unused and will be removed from module zusys_axis_live_audio_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/transmit_data_reg[5]) is unused and will be removed from module zusys_axis_live_audio_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/transmit_data_reg[4]) is unused and will be removed from module zusys_axis_live_audio_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/transmit_data_reg[3]) is unused and will be removed from module zusys_axis_live_audio_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/transmit_data_reg[2]) is unused and will be removed from module zusys_axis_live_audio_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/transmit_data_reg[1]) is unused and will be removed from module zusys_axis_live_audio_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/transmit_data_reg[0]) is unused and will be removed from module zusys_axis_live_audio_0_0.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:50 ; elapsed = 00:02:14 . Memory (MB): peak = 2076.270 ; gain = 705.938 ; free physical = 270 ; free virtual = 10933
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:18 ; elapsed = 00:03:16 . Memory (MB): peak = 2496.488 ; gain = 1126.156 ; free physical = 126 ; free virtual = 10752
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:18 ; elapsed = 00:03:16 . Memory (MB): peak = 2496.488 ; gain = 1126.156 ; free physical = 131 ; free virtual = 10763
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:18 ; elapsed = 00:03:16 . Memory (MB): peak = 2516.520 ; gain = 1146.188 ; free physical = 195 ; free virtual = 10826
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:19 ; elapsed = 00:03:17 . Memory (MB): peak = 2516.520 ; gain = 1146.188 ; free physical = 121 ; free virtual = 10755
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:19 ; elapsed = 00:03:17 . Memory (MB): peak = 2516.520 ; gain = 1146.188 ; free physical = 119 ; free virtual = 10753
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:19 ; elapsed = 00:03:17 . Memory (MB): peak = 2516.520 ; gain = 1146.188 ; free physical = 137 ; free virtual = 10771
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:19 ; elapsed = 00:03:17 . Memory (MB): peak = 2516.520 ; gain = 1146.188 ; free physical = 136 ; free virtual = 10770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:19 ; elapsed = 00:03:17 . Memory (MB): peak = 2516.520 ; gain = 1146.188 ; free physical = 134 ; free virtual = 10768
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:19 ; elapsed = 00:03:17 . Memory (MB): peak = 2516.520 ; gain = 1146.188 ; free physical = 133 ; free virtual = 10767
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++--------------------------+------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name               | RTL Name               | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++--------------------------+------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|zusys_axis_live_audio_0_0 | U0/receive_data_reg[8] | 9      | 1     | NO           | YES                | YES               | 1      | 0       | 
++--------------------------+------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |LUT2   |     4|
+|2     |LUT4   |     3|
+|3     |LUT5   |    25|
+|4     |LUT6   |     4|
+|5     |SRL16E |     1|
+|6     |FDRE   |   129|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------+---------------------+------+
+|      |Instance |Module               |Cells |
++------+---------+---------------------+------+
+|1     |top      |                     |   166|
+|2     |  U0     |axis_live_audio_v1_0 |   166|
++------+---------+---------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:19 ; elapsed = 00:03:17 . Memory (MB): peak = 2516.520 ; gain = 1146.188 ; free physical = 132 ; free virtual = 10765
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 11 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:04 ; elapsed = 00:01:43 . Memory (MB): peak = 2516.520 ; gain = 449.531 ; free physical = 140 ; free virtual = 10791
+Synthesis Optimization Complete : Time (s): cpu = 00:01:19 ; elapsed = 00:03:17 . Memory (MB): peak = 2516.527 ; gain = 1146.188 ; free physical = 135 ; free virtual = 10788
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+34 Infos, 22 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:22 ; elapsed = 00:03:20 . Memory (MB): peak = 2538.520 ; gain = 1168.188 ; free physical = 161 ; free virtual = 10993
+INFO: [Common 17-1381] The checkpoint '/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_axis_live_audio_0_0_synth_1/zusys_axis_live_audio_0_0.dcp' has been generated.

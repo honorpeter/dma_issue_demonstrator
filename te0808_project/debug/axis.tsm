@@ -1,0 +1,38 @@
+##################################################
+#
+# For info on creating trigger state machines:
+#   1) In the main Vivado menu bar, select
+#      Window > Language Templates
+#   2) In the Templates window, select
+#      Debug > Trigger State Machine
+#   3) Refer to the entry 'Info' for an overview
+#      of the trigger state machine language.
+#
+# More information can be found in this document:
+#
+#   Vivado Design Suite User Guide: Programming
+#   and Debugging (UG908)
+#
+##################################################
+
+state state_0:  # This state allows to ensure that either TREADY makes a 1 -> 0 transition
+                # or TVALID makes a 0 -> transition, in order to be able to trigger the 
+                # ILA even when the design is blocked with TREADY = 0 and TVALID = 1
+    if ((zusys_i/axis_interconnect_0_M00_AXIS_TREADY == 1'b1) 
+        || (zusys_i/axis_interconnect_0_M00_AXIS_TVALID == 1'b0)) then
+        goto state_1;
+    else 
+        goto state_0;
+    endif
+  
+state state_1:
+    if ((zusys_i/axis_interconnect_0_M00_AXIS_TREADY == 1'b1) 
+        || (zusys_i/axis_interconnect_0_M00_AXIS_TVALID == 1'b0)) then
+        reset_counter $counter0;
+        goto state_1;
+    elseif ($counter0 == 16'u2000) then
+        trigger;
+    else
+        increment_counter $counter0;
+        goto state_1;
+    endif

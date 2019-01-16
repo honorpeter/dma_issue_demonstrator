@@ -1,0 +1,175 @@
+#include "xaxidma.h"
+#include "xaxidma_bd.h"
+#include "common.h"
+
+#ifdef XPAR_INTC_0_DEVICE_ID
+ #include "xintc.h"
+#else
+ #include "xscugic.h"
+#endif
+
+#ifndef DMA_MANAGEMENT_H
+#define DMA_MANAGEMENT_H
+
+/******************** Constant Definitions **********************************/
+/*
+ * Device hardware build related constants.
+ */
+
+#define DMA0_DEV_ID		XPAR_AXIDMA_0_DEVICE_ID
+
+extern const u32 DMA_DEV_ID;
+
+#if defined(XPAR_AXI_7SDDR_0_S_AXI_BASEADDR)
+#define DDR_BASE_ADDR		XPAR_AXI_7SDDR_0_S_AXI_BASEADDR
+#elif defined(XPAR_MIG7SERIES_0_BASEADDR)
+#define DDR_BASE_ADDR	XPAR_MIG7SERIES_0_BASEADDR
+#elif defined(XPAR_MIG_0_BASEADDR)
+#define DDR_BASE_ADDR	XPAR_MIG_0_BASEADDR
+#elif defined(XPAR_PSU_DDR_0_S_AXI_BASEADDR)
+#define DDR_BASE_ADDR	XPAR_PSU_DDR_0_S_AXI_BASEADDR
+#endif
+
+#ifndef DDR_BASE_ADDR
+#warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+			DEFAULT SET TO 0x01000000
+#define MEM_BASE_ADDR		0x01000000
+#else
+#define MEM_BASE_ADDR		(DDR_BASE_ADDR + 0x1000000)
+#endif
+
+#ifdef XPAR_INTC_0_DEVICE_ID
+#define INTC_DEVICE_ID          XPAR_INTC_0_DEVICE_ID
+#else
+#define INTC_DEVICE_ID          XPAR_SCUGIC_SINGLE_DEVICE_ID
+#endif
+
+#ifdef XPAR_INTC_0_DEVICE_ID
+#define DMA0_RX_INTR_ID		XPAR_INTC_0_AXIDMA_0_S2MM_INTROUT_VEC_ID
+#define DMA0_TX_INTR_ID		XPAR_INTC_0_AXIDMA_0_MM2S_INTROUT_VEC_ID
+#else
+#define DMA0_RX_INTR_ID		XPAR_FABRIC_AXIDMA_0_S2MM_INTROUT_VEC_ID
+#define DMA0_TX_INTR_ID		XPAR_FABRIC_AXIDMA_0_MM2S_INTROUT_VEC_ID
+#endif
+
+extern const u16 DMA_TX_INTR_ID;
+
+extern const u16 DMA_RX_INTR_ID;
+
+extern volatile int stat_tx_interrupts; // Counter of TX interrupts
+extern volatile int stat_rx_interrupts; // Counter of RX interrupts
+
+/* Address mapping: the following address spaces are not visible from the linker script!
+ * For that, the size of the DDR memory indicated in the linker script has been reduced from
+ * 2 GB to 1 GB. */
+#define RX_BD_SPACE_BASE	(MEM_BASE_ADDR + 0x40000000)	// address of the first RX BD ring. Every next RX BD ring is placed
+															// at the end of the previous.
+#define RX_BD_SPACE_SIZE	0x01000000 // Size of a BD space for one channel
+#define RX_BD_SPACE_HIGH	(RX_BD_SPACE_BASE + NB_RX_CHANNELS*RX_BD_SPACE_SIZE - 1)
+
+#define TX_BD_SPACE_BASE	(RX_BD_SPACE_HIGH + 1)
+#define TX_BD_SPACE_SIZE	0x01000000 // Size of a BD space for one channel
+#define TX_BD_SPACE_HIGH	(TX_BD_SPACE_BASE + TX_BD_SPACE_SIZE - 1)
+
+#define TX_BUFFER_BASE		(MEM_BASE_ADDR + 0x60000000) // Buffer storing the source image
+#define TX_BUFFER_HIGH		(MEM_BASE_ADDR + 0x6FFFFFFF)
+#define RX_BUFFER_BASE		(MEM_BASE_ADDR + 0x70000000) // Buffer storing the destination image
+#define RX_BUFFER_HIGH		(0x7FFFFFFF)
+
+#if HEADER_SPACE_HIGH >= TX_BUFFER_BASE
+	#error Buffers are too big and overtake on image buffers! Please reduce the size of these buffers.
+#endif
+
+#ifdef XPAR_INTC_0_DEVICE_ID
+#define INTC_DEVICE_ID          XPAR_INTC_0_DEVICE_ID
+#else
+#define INTC_DEVICE_ID          XPAR_SCUGIC_SINGLE_DEVICE_ID
+#endif
+
+/* Timeout loop counter for reset
+ */
+#define RESET_TIMEOUT_COUNTER	10000
+
+#define MARK_UNCACHEABLE	0x701
+
+/* The interrupt coalescing threshold and delay timer threshold
+ * Valid range is 1
+ *
+ * Note: Coalescing threshold configured for more than one is not
+ * 	 supported by the AXIDMA IP v6_00_a.
+ */
+#define COALESCING_COUNT		1 		// Original value: 1
+#define DELAY_TIMER_COUNT		100		// Original value: 100
+
+#ifdef XPAR_INTC_0_DEVICE_ID
+ #define INTC		XIntc
+ #define INTC_HANDLER	XIntc_InterruptHandler
+#else
+ #define INTC		XScuGic
+ #define INTC_HANDLER	XScuGic_InterruptHandler
+#endif
+
+/*
+ * MCDMA Values
+ */
+#define TUSER	0x0		/* User defined sideband signaling */
+#define ARCACHE 0x3		/* Cache type */
+#define ARUSER 	0x0		/* Sideband signals */
+
+/***************************** Macros ****************************************/
+#ifndef max
+    #define max(a,b) ((a) > (b) ? (a) : (b))
+#endif
+/************************** Variable Definitions *****************************/
+/*
+ * Device instance definitions
+ */
+extern XAxiDma AxiDma;
+
+/*
+ * Flags interrupt handlers use to notify the application context the events.
+ */
+extern volatile int TxDone;
+extern volatile int RxDone;
+extern volatile int Error;
+
+extern volatile int try_nb_fail;
+
+/************************** Functions Prototypes *****************************/
+
+void TxCallBack(XAxiDma * AxiDmaInstPtr);
+void TxIntrHandler(void *Callback);
+void RxCallBack(XAxiDma * AxiDmaInstPtr);
+void RxIntrHandler(void *Callback);
+
+int SetupIntrSystem(INTC * IntcInstancePtr,
+			   XAxiDma * AxiDmaPtr, u16 TxIntrId, u16 RxIntrId);
+void DisableIntrSystem(INTC * IntcInstancePtr,
+					u16 TxIntrId, u16 RxIntrId);
+
+int RxSetup(XAxiDma * AxiDmaInstPtr);
+int TxSetup(XAxiDma * AxiDmaInstPtr);
+
+/**
+ *  Configures the DMA for the transmission of a TX packet.
+ *
+ *  @param AxiDmaInstPtr instance of an AXI DMA
+ *  @param startAddr address of the start of the buffer
+ *  @param length length of the TX packet in bytes
+ *  @param TDest TDEST value of the MM2S AXI-Stream.
+ *  @param TId TID value of the MM2S AXI-Stream.
+ */
+int sendPacket(XAxiDma* AxiDmaInstPtr, u8* startAddr, u32 length, u8 TDest, u8 TId);
+
+/**
+ *  Configures the DMA for the reception of a RX packet.
+ *
+ *  @param AxiDmaInstPtr instance of an AXI DMA
+ *  @param channel channel number
+ *  @param startAddr address of the start of the buffer
+ *  @param length length of the RX packet in bytes
+ */
+int receivePacket(XAxiDma* AxiDmaInstPtr, int channel, u8* startAddr, u32 length);
+
+
+#endif

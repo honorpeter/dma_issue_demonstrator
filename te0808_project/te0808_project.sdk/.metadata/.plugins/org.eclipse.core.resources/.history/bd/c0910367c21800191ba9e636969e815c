@@ -1,0 +1,30 @@
+#ifndef COMMON_H
+#define COMMON_H
+
+/* -------------------------------------------------------------
+ * Parameters of the design
+ * ------------------------------------------------------------- */
+
+#define MM2S_WIDTH		4
+#define S2MM_WIDTH		4
+#define TX_PACKET_LENGTH 3
+#define NB_RX_CHANNELS 2
+
+
+#define NB_RX_PER_TX 10 // Number of RX packets to generate by dma_killer block transmitted in each TX packet.
+
+#define NB_TRY 100
+
+/* -------------------------------------------------------------
+ * Debug and test options
+ * ------------------------------------------------------------- */
+
+//#define DISP_DMA_STATE
+
+//#define DEBUG_WAIT_LOOP // Display the number of RX and TX BDs processed while waiting for the completion of the BDs.
+#define DISP_NB_TRANSFERS
+#define DISP_NB_INTERRUPTS
+
+//#define ADD_PAUSE_TX // Parts of the code related to the debug of the problem of RX idle is delimited by this symbol
+
+#endif

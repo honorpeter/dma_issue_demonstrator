@@ -1,0 +1,6 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/M00_AXIS.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity M00_AXIS
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sources_1/new/top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity top
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.srcs/sim_1/new/tb_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity tb_top

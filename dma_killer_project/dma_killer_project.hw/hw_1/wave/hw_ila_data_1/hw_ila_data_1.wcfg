@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/matt/Git/dma_issue_demonstrator/dma_killer_project/dma_killer_project.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+   </zoom_setting>
+   <column_width_setting>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject type="logic" fp_name="zusys_i/axis_interconnect_0_M00_AXIS_TREADY">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">zusys_i/axis_interconnect_0_M00_AXIS_TREADY</obj_property>
+      <obj_property name="ObjectShortName">axis_interconnect_0_M00_AXIS_TREADY</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/axis_interconnect_0_M00_AXIS_TDATA">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">zusys_i/axis_interconnect_0_M00_AXIS_TDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">axis_interconnect_0_M00_AXIS_TDATA[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/probe2__0">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">zusys_i/probe2__0[3:0]</obj_property>
+      <obj_property name="ObjectShortName">probe2__0[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="zusys_i/axis_interconnect_0_M00_AXIS_TVALID">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">zusys_i/axis_interconnect_0_M00_AXIS_TVALID</obj_property>
+      <obj_property name="ObjectShortName">axis_interconnect_0_M00_AXIS_TVALID</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="zusys_i/axis_interconnect_0_M00_AXIS_TLAST">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">zusys_i/axis_interconnect_0_M00_AXIS_TLAST</obj_property>
+      <obj_property name="ObjectShortName">axis_interconnect_0_M00_AXIS_TLAST</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/axis_interconnect_0_M00_AXIS_TUSER">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">zusys_i/axis_interconnect_0_M00_AXIS_TUSER[3:0]</obj_property>
+      <obj_property name="ObjectShortName">axis_interconnect_0_M00_AXIS_TUSER[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/axis_interconnect_0_M00_AXIS_TKEEP">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">zusys_i/axis_interconnect_0_M00_AXIS_TKEEP[3:0]</obj_property>
+      <obj_property name="ObjectShortName">axis_interconnect_0_M00_AXIS_TKEEP[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/axis_interconnect_0_M00_AXIS_TDEST">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">zusys_i/axis_interconnect_0_M00_AXIS_TDEST[4:0]</obj_property>
+      <obj_property name="ObjectShortName">axis_interconnect_0_M00_AXIS_TDEST[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="zusys_i/axis_interconnect_0_M00_AXIS_TID">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">zusys_i/axis_interconnect_0_M00_AXIS_TID[4:0]</obj_property>
+      <obj_property name="ObjectShortName">axis_interconnect_0_M00_AXIS_TID[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+</wave_config>

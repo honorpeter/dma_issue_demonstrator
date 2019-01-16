@@ -1,0 +1,33 @@
+------- DMA issue demonstrator --------                                         
+--- Entering main() ---                                                         
+DMA transfers in progress...                                                    
+Try no 0 successful                                                             
+Try no 1 successful                                                             
+Try no 2 successful                                                             
+Transfers failed at try no 3                                                    
+TxDone=104/1000, RxDone=4/10000                                                 
+                                                                                
+Dump registers of the DMA:                                                      
+Channel TX 0.0:                                                                 
+Dump registers A0000000:                                                        
+Control REG: 64017003                                                           
+Status REG: 00010008                                                            
+Cur BD REG: 43030800                                                            
+Tail BD REG: 4303E7C0                                                           
+                                                                                
+Channel RX 0.0:                                                                 
+Dump registers A0000030:                                                        
+Control REG: 64017003                                                           
+Status REG: 0001000A                                                            
+Cur BD REG: 410EA680                                                            
+Tail BD REG: 41138800                                                           
+                                                                                
+Channel RX 0.1:                                                                 
+Dump registers A0000030:                                                        
+Control REG: 64017003                                                           
+Status REG: 0001000A                                                            
+Cur BD REG: 420EA680                                                            
+Tail BD REG: 42138800                                                           
+                                                                                
+Transfers failed at try no 3                                                    
+--- Exiting main() ---  

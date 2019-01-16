@@ -1,0 +1,785 @@
+#include "dma_management.h"
+
+/*
+ * Device instance definitions
+ */
+XAxiDma AxiDma;
+
+/*
+ * Flags interrupt handlers use to notify the application context the events.
+ */
+volatile int TxDone;
+volatile int RxDone;
+volatile int Error;
+
+const u32 DMA_DEV_ID = DMA0_DEV_ID;
+
+const u16 DMA_TX_INTR_ID = DMA0_TX_INTR_ID;
+
+const u16 DMA_RX_INTR_ID = DMA0_RX_INTR_ID;
+
+volatile int stat_tx_interrupts = 0; // Counter of TX interrupts
+volatile int stat_rx_interrupts = 0; // Counter of RX interrupts
+
+/*
+ * Buffer for transmit packet. Must be 32-bit aligned to be used by DMA.
+ */
+//u32 *Packet = (u32 *) TX_BUFFER_BASE;
+
+/*****************************************************************************/
+/*
+*
+* This is the DMA TX callback function to be called by TX interrupt handler.
+* This function handles BDs finished by hardware.
+*
+* @param	TxRingPtr is a pointer to TX channel of the DMA engine.
+*
+* @return	None.
+*
+* @note		None.
+*
+******************************************************************************/
+void TxCallBack(XAxiDma *AxiDmaPtr)
+{
+	int BdCount;
+	u32 BdSts;
+	XAxiDma_Bd *BdPtr;
+	XAxiDma_Bd *BdCurPtr;
+	int Status;
+	int Index;
+	XAxiDma_BdRing *TxRingPtr = XAxiDma_GetTxRing(AxiDmaPtr);
+
+	/* Get all processed BDs from hardware */
+	BdCount = XAxiDma_BdRingFromHw(TxRingPtr, XAXIDMA_ALL_BDS, &BdPtr);
+
+	/* Handle the BDs */
+	BdCurPtr = BdPtr;
+	for (Index = 0; Index < BdCount; Index++) {
+
+		/*
+		 * Check the status in each BD
+		 * If error happens, the DMA engine will be halted after this
+		 * BD processing stops.
+		 */
+		BdSts = XAxiDma_BdGetSts(BdCurPtr);
+		if ((BdSts & XAXIDMA_BD_STS_ALL_ERR_MASK) ||
+		    (!(BdSts & XAXIDMA_BD_STS_COMPLETE_MASK))) {
+
+			printf("Error on BD at address 0x%x\r\n", BdCurPtr);
+			Error = 1;
+			break;
+		}
+
+		/*
+		 * Here we don't need to do anything. But if a RTOS is being
+		 * used, we may need to free the packet buffer attached to
+		 * the processed BD
+		 */
+
+		/* Find the next processed BD */
+		BdCurPtr = (XAxiDma_Bd *)XAxiDma_BdRingNext(TxRingPtr, BdCurPtr);
+	}
+
+	/* Free all processed BDs for future transmission */
+	Status = XAxiDma_BdRingFree(TxRingPtr, BdCount, BdPtr);
+	if (Status != XST_SUCCESS) {
+		Error = 1;
+	}
+
+	if(!Error) {
+		TxDone += BdCount;
+	}
+}
+
+/*****************************************************************************/
+/*
+*
+* This is the DMA TX Interrupt handler function.
+*
+* It gets the interrupt status from the hardware, acknowledges it, and if any
+* error happens, it resets the hardware. Otherwise, if a completion interrupt
+* presents, then it calls the callback function.
+*
+* @param	Callback is a pointer to TX channel of the DMA engine.
+*
+* @return	None.
+*
+* @note		None.
+*
+******************************************************************************/
+void TxIntrHandler(void *Callback)
+{
+	XAxiDma *AxiDmaPtr = (XAxiDma *) Callback;
+	XAxiDma_BdRing *TxRingPtr = XAxiDma_GetTxRing(AxiDmaPtr);
+	u32 IrqStatus;
+	int TimeOut;
+
+	// Increment stats of number of TX interrupts
+	stat_tx_interrupts++;
+
+	/* Read pending interrupts */
+	IrqStatus = XAxiDma_BdRingGetIrq(TxRingPtr); // Retrieve the contents of the channel's IRQ register XAXIDMA_SR_OFFSET
+
+	/* Acknowledge pending interrupts */
+	XAxiDma_BdRingAckIrq(TxRingPtr, IrqStatus);
+
+	/* If no interrupt is asserted, we do not do anything
+	 */
+	if (!(IrqStatus & XAXIDMA_IRQ_ALL_MASK)) {
+		xil_printf("No interrupt. Quitting without doing anything.\r\n"); //TODO comment
+		return;
+	}
+
+	/*
+	 * If error interrupt is asserted, raise error flag, reset the
+	 * hardware to recover from the error, and return with no further
+	 * processing.
+	 */
+	if ((IrqStatus & XAXIDMA_IRQ_ERROR_MASK)) {
+		xil_printf("TxIntrHandler: error interrupt bit is asserted.\r\n");
+		Error = 1;
+
+		/*
+		 * Reset should never fail for transmit channel
+		 */
+		XAxiDma_Reset(AxiDmaPtr);
+
+		TimeOut = RESET_TIMEOUT_COUNTER;
+
+		while (TimeOut) {
+			if (XAxiDma_ResetIsDone(AxiDmaPtr)) {
+				break;
+			}
+
+			TimeOut -= 1;
+		}
+
+		return;
+	}
+
+	/*
+	 * If Transmit done interrupt is asserted, call TX call back function
+	 * to handle the processed BDs and raise the according flag
+	 */
+	if ((IrqStatus & (XAXIDMA_IRQ_DELAY_MASK | XAXIDMA_IRQ_IOC_MASK))) {
+		TxCallBack(AxiDmaPtr);
+	}
+}
+
+/*****************************************************************************/
+/*
+*
+* This is the DMA RX callback function called by the RX interrupt handler.
+* This function handles finished BDs by hardware, attaches new buffers to those
+* BDs, and give them back to hardware to receive more incoming packets
+*
+* @param	RxRingPtr is a pointer to RX channel of the DMA engine.
+*
+* @return	None.
+*
+* @note		None.
+*
+******************************************************************************/
+void RxCallBack(XAxiDma *AxiDmaPtr)
+{
+	int BdCount;
+	XAxiDma_Bd *BdPtr;
+	XAxiDma_Bd *BdCurPtr;
+	u32 BdSts;
+	int Index;
+	int RingIndex;
+	XAxiDma_BdRing *RxRingPtr;
+	int Status;
+
+	for (RingIndex = 0;
+			RingIndex < AxiDmaPtr->RxNumChannels; RingIndex++) {
+
+		RxRingPtr = XAxiDma_GetRxIndexRing(AxiDmaPtr, RingIndex);
+		BdCount = XAxiDma_BdRingFromHw(RxRingPtr, XAXIDMA_ALL_BDS, &BdPtr);
+
+		BdCurPtr = BdPtr;
+		for (Index = 0; Index < BdCount; Index++) {
+
+			/*
+			 * Check the flags set by the hardware for status
+			 * If error happens, processing stops, because the DMA engine
+			 * is halted after this BD.
+			 */
+			BdSts = XAxiDma_BdGetSts(BdCurPtr);
+			if ((BdSts & XAXIDMA_BD_STS_ALL_ERR_MASK) ||
+			    (!(BdSts & XAXIDMA_BD_STS_COMPLETE_MASK))) {
+				xil_printf("Error on BD at address 0x%x\r\n", BdCurPtr);
+				Error = 1;
+				break;
+			}
+
+			/* Find the next processed BD */
+			BdCurPtr = (XAxiDma_Bd *)XAxiDma_BdRingNext(RxRingPtr, BdCurPtr);
+
+			//RxDone += 1;
+		}
+
+		/* Free all processed BDs for future transmission */
+		/*Status = XAxiDma_BdRingFree(RxRingPtr, BdCount, BdPtr);
+		if (Status != XST_SUCCESS) {
+			xil_printf("RxCallback: error on XAxiDma_BdRingFree()\r\n");
+			Error = 1;
+		} */
+
+		if(!Error) {
+			RxDone += BdCount;
+		}
+	}
+}
+
+/*****************************************************************************/
+/*
+*
+* This is the DMA RX interrupt handler function
+*
+* It gets the interrupt status from the hardware, acknowledges it, and if any
+* error happens, it resets the hardware. Otherwise, if a completion interrupt
+* presents, then it calls the callback function.
+*
+* @param	Callback is a pointer to RX channel of the DMA engine.
+*
+* @return	None.
+*
+* @note		None.
+*
+******************************************************************************/
+void RxIntrHandler(void *Callback)
+{
+	XAxiDma *AxiDmaPtr = (XAxiDma *) Callback;
+
+	XAxiDma_BdRing *RxRingPtr = XAxiDma_GetRxIndexRing(AxiDmaPtr, 0);
+
+	u32 IrqStatus;
+	int TimeOut;
+
+	// Increment stats of number of RX interrupts
+	stat_rx_interrupts++;
+
+	/* Read pending interrupts */
+	IrqStatus = XAxiDma_BdRingGetIrq(RxRingPtr);
+
+	/* Acknowledge pending interrupts */
+	XAxiDma_BdRingAckIrq(RxRingPtr, IrqStatus);
+
+	/*
+	 * If no interrupt is asserted, we do not do anything
+	 */
+	if (!(IrqStatus & XAXIDMA_IRQ_ALL_MASK)) {
+		//xil_printf("No interrupt. Quitting without doing anything.\r\n");
+		return;
+	}
+
+	/*
+	 * If error interrupt is asserted, raise error flag, reset the
+	 * hardware to recover from the error, and return with no further
+	 * processing.
+	 */
+	if ((IrqStatus & XAXIDMA_IRQ_ERROR_MASK)) {
+		xil_printf("RxIntrHandler: error interrupt bit is asserted.\r\n");
+		Error = 1;
+
+		/* Reset could fail and hang
+		 * NEED a way to handle this or do not call it??
+		 */
+		XAxiDma_Reset(AxiDmaPtr);
+
+		TimeOut = RESET_TIMEOUT_COUNTER;
+
+		while (TimeOut) {
+			if(XAxiDma_ResetIsDone(AxiDmaPtr)) {
+				break;
+			}
+
+			TimeOut -= 1;
+		}
+
+		return;
+	}
+
+	/*
+	 * If completion interrupt is asserted, call RX call back function
+	 * to handle the processed BDs and then raise the according flag.
+	 */
+	if ((IrqStatus & (XAXIDMA_IRQ_DELAY_MASK | XAXIDMA_IRQ_IOC_MASK))) {
+		RxCallBack(AxiDmaPtr);
+	}
+}
+
+/*****************************************************************************/
+/*
+*
+* This function setups the interrupt system so interrupts can occur for the
+* DMA, it assumes INTC component exists in the hardware system.
+*
+* @param	IntcInstancePtr is a pointer to the instance of the INTC.
+* @param	AxiDmaPtr is a pointer to the instance of the DMA engine
+* @param	TxIntrId is the TX channel Interrupt ID.
+* @param	RxIntrId is the RX channel Interrupt ID.
+*
+* @return
+*		- XST_SUCCESS if successful,
+*		- XST_FAILURE.if not succesful
+*
+* @note		None.
+*
+******************************************************************************/
+
+int SetupIntrSystem(INTC * IntcInstancePtr,
+			   XAxiDma * AxiDmaPtr, u16 TxIntrId,
+			   u16 RxIntrId)
+{
+	int Status;
+
+#ifdef XPAR_INTC_0_DEVICE_ID
+
+	/* Initialize the interrupt controller and connect the ISRs */
+	Status = XIntc_Initialize(IntcInstancePtr, INTC_DEVICE_ID);
+	if (Status != XST_SUCCESS) {
+
+		xil_printf("Failed init intc\r\n");
+		return XST_FAILURE;
+	}
+
+	Status = XIntc_Connect(IntcInstancePtr, TxIntrId,
+			       (XInterruptHandler) TxIntrHandler, AxiDmaPtr);
+	if (Status != XST_SUCCESS) {
+
+		xil_printf("Failed tx connect intc\r\n");
+		return XST_FAILURE;
+	}
+
+	Status = XIntc_Connect(IntcInstancePtr, RxIntrId,
+			       (XInterruptHandler) RxIntrHandler, AxiDmaPtr);
+	if (Status != XST_SUCCESS) {
+
+		xil_printf("Failed rx connect intc\r\n");
+		return XST_FAILURE;
+	}
+
+	/* Start the interrupt controller */
+	Status = XIntc_Start(IntcInstancePtr, XIN_REAL_MODE);
+	if (Status != XST_SUCCESS) {
+
+		xil_printf("Failed to start intc\r\n");
+		return XST_FAILURE;
+	}
+
+	XIntc_Enable(IntcInstancePtr, TxIntrId);
+	XIntc_Enable(IntcInstancePtr, RxIntrId);
+
+#else
+
+	XScuGic_Config *IntcConfig;
+
+
+	/*
+	 * Initialize the interrupt controller driver so that it is ready to
+	 * use.
+	 */
+	IntcConfig = XScuGic_LookupConfig(INTC_DEVICE_ID);
+	if (NULL == IntcConfig) {
+		return XST_FAILURE;
+	}
+
+	Status = XScuGic_CfgInitialize(IntcInstancePtr, IntcConfig,
+					IntcConfig->CpuBaseAddress);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+
+	XScuGic_SetPriorityTriggerType(IntcInstancePtr, TxIntrId, 0xA0, 0x3);
+
+	XScuGic_SetPriorityTriggerType(IntcInstancePtr, RxIntrId, 0xA0, 0x3);
+	/*
+	 * Connect the device driver handler that will be called when an
+	 * interrupt for the device occurs, the handler defined above performs
+	 * the specific interrupt processing for the device.
+	 */
+	Status = XScuGic_Connect(IntcInstancePtr, TxIntrId,
+				(Xil_InterruptHandler)TxIntrHandler,
+				AxiDmaPtr);
+	if (Status != XST_SUCCESS) {
+		return Status;
+	}
+
+	Status = XScuGic_Connect(IntcInstancePtr, RxIntrId,
+				(Xil_InterruptHandler)RxIntrHandler,
+				AxiDmaPtr);
+	if (Status != XST_SUCCESS) {
+		return Status;
+	}
+
+	XScuGic_Enable(IntcInstancePtr, TxIntrId);
+	XScuGic_Enable(IntcInstancePtr, RxIntrId);
+#endif
+
+	/* Enable interrupts from the hardware */
+
+	Xil_ExceptionInit();
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+			(Xil_ExceptionHandler)INTC_HANDLER,
+			(void *)IntcInstancePtr);
+
+	Xil_ExceptionEnable();
+
+	return XST_SUCCESS;
+}
+
+/*****************************************************************************/
+/**
+*
+* This function disables the interrupts for DMA engine.
+*
+* @param	IntcInstancePtr is the pointer to the INTC component instance
+* @param	TxIntrId is interrupt ID associated w/ DMA TX channel
+* @param	RxIntrId is interrupt ID associated w/ DMA RX channel
+*
+* @return	None.
+*
+* @note		None.
+*
+******************************************************************************/
+void DisableIntrSystem(INTC * IntcInstancePtr,
+					u16 TxIntrId, u16 RxIntrId)
+{
+#ifdef XPAR_INTC_0_DEVICE_ID
+	/* Disconnect the interrupts for the DMA TX and RX channels */
+	XIntc_Disconnect(IntcInstancePtr, TxIntrId);
+	XIntc_Disconnect(IntcInstancePtr, RxIntrId);
+#else
+	XScuGic_Disconnect(IntcInstancePtr, TxIntrId);
+	XScuGic_Disconnect(IntcInstancePtr, RxIntrId);
+#endif
+}
+
+/*****************************************************************************/
+/*
+*
+* This function sets up RX channel of the DMA engine to be ready for packet
+* reception
+*
+* @param	AxiDmaInstPtr is the pointer to the instance of the DMA engine.
+* has index 0, then 1, etc
+*
+* @return	- XST_SUCCESS if the setup is successful.
+*		- XST_FAILURE if fails.
+*
+* @note		None.
+*
+******************************************************************************/
+int RxSetup(XAxiDma * AxiDmaInstPtr)
+{
+	XAxiDma_BdRing *RxRingPtr;
+	int Status;
+	XAxiDma_Bd BdTemplate;
+	int BdCount;
+	u32 RxBdSpacePtr;
+	int RingIndex;
+
+	RxBdSpacePtr = (u32)RX_BD_SPACE_BASE;
+
+	for (RingIndex = 0; RingIndex < AxiDmaInstPtr->RxNumChannels; RingIndex++) {
+		RxRingPtr = XAxiDma_GetRxIndexRing(AxiDmaInstPtr, RingIndex);
+
+		/* Disable all RX interrupts before RxBD space setup */
+		XAxiDma_BdRingIntDisable(RxRingPtr,
+						XAXIDMA_IRQ_ALL_MASK);
+
+		xil_printf("RX channel %d at address 0x%x\r\n", RingIndex, RxBdSpacePtr); //DEBUG
+
+		/* Setup Rx BD space */
+		BdCount = XAxiDma_BdRingCntCalc(XAXIDMA_BD_MINIMUM_ALIGNMENT, RX_BD_SPACE_SIZE);
+		Status = XAxiDma_BdRingCreate(RxRingPtr, // BD ring instance to be worked on
+					RxBdSpacePtr,	// Physical base address of the application memory region
+					RxBdSpacePtr,	// Virtual base address of the application memory region
+					XAXIDMA_BD_MINIMUM_ALIGNMENT, // Byte alignment of individual BD
+					BdCount); // Number of BDs to setup in the application memory region.
+		if (Status != XST_SUCCESS) {
+			xil_printf("Rx bd create failed with %d\r\n",
+				Status);
+			return XST_FAILURE;
+		}
+
+		/*
+		 * Setup a BD template for the Rx channel. Then copy it
+		 * to every RX BD.
+		 */
+		XAxiDma_BdClear(&BdTemplate);
+		Status = XAxiDma_BdRingClone(RxRingPtr,
+						 &BdTemplate);
+		if (Status != XST_SUCCESS) {
+			xil_printf("Rx bd clone failed with %d\r\n",
+				Status);
+			return XST_FAILURE;
+		}
+
+
+		/*
+		 * Set the coalescing threshold, so only one receive interrupt
+		 * occurs for this example
+		 *
+		 * If you would like to have multiple interrupts to happen, change
+		 * the COALESCING_COUNT to be a smaller value
+		 */
+		Status = XAxiDma_BdRingSetCoalesce(RxRingPtr, COALESCING_COUNT,
+				DELAY_TIMER_COUNT);
+		if (Status != XST_SUCCESS) {
+			xil_printf("Rx set coalesce failed with %d\r\n", Status);
+			return XST_FAILURE;
+		}
+
+		XAxiDma_BdRingIntEnable(RxRingPtr, XAXIDMA_IRQ_ALL_MASK);
+
+		/* Start RX DMA channel */
+		Status = XAxiDma_UpdateBdRingCDesc(RxRingPtr);
+		if (Status != XST_SUCCESS) {
+			xil_printf("Failed bd start %x\r\n", Status);
+			return XST_FAILURE;
+		}
+
+		RxBdSpacePtr += RX_BD_SPACE_SIZE;
+
+	}
+
+	for (RingIndex = 0; RingIndex < AxiDmaInstPtr->RxNumChannels; RingIndex++) {
+
+		RxRingPtr = XAxiDma_GetRxIndexRing(AxiDmaInstPtr, RingIndex);
+		Status = XAxiDma_StartBdRingHw(RxRingPtr);
+		if (Status != XST_SUCCESS) {
+			xil_printf("Rx start BD ring failed with %d\r\n", Status);
+			return XST_FAILURE;
+		}
+	}
+
+	return XST_SUCCESS;
+}
+
+/*****************************************************************************/
+/*
+*
+* This function sets up the TX channel of a DMA engine to be ready for packet
+* transmission.
+*
+* @param	AxiDmaInstPtr is the pointer to the instance of the DMA engine.
+* has index 0, then 1, etc
+*
+* @return	- XST_SUCCESS if the setup is successful.
+*		- XST_FAILURE otherwise.
+*
+* @note		None.
+*
+******************************************************************************/
+int TxSetup(XAxiDma * AxiDmaInstPtr)
+{
+	XAxiDma_BdRing *TxRingPtr = XAxiDma_GetTxRing(AxiDmaInstPtr);
+	XAxiDma_Bd BdTemplate;
+	int Status;
+	u32 BdCount;
+
+	u32 TxBdSpacePtr = TX_BD_SPACE_BASE;
+	xil_printf("TX channel at address 0x%x\r\n", TxBdSpacePtr); //DEBUG
+
+	/* Disable all TX interrupts before TxBD space setup */
+	XAxiDma_BdRingIntDisable(TxRingPtr, XAXIDMA_IRQ_ALL_MASK);
+
+	/* Setup TxBD space  */
+	BdCount = XAxiDma_BdRingCntCalc(XAXIDMA_BD_MINIMUM_ALIGNMENT,
+			(u32)TX_BD_SPACE_SIZE);
+
+	Status = XAxiDma_BdRingCreate(TxRingPtr, TxBdSpacePtr,
+				TxBdSpacePtr,
+			     XAXIDMA_BD_MINIMUM_ALIGNMENT, BdCount);
+	if (Status != XST_SUCCESS) {
+
+		xil_printf("Failed create BD ring\r\n");
+		return XST_FAILURE;
+	}
+
+	/*
+	 * Like the RxBD space, we create a template and set all BDs to be the
+	 * same as the template. The sender has to set up the BDs as needed.
+	 */
+	XAxiDma_BdClear(&BdTemplate);
+	Status = XAxiDma_BdRingClone(TxRingPtr, &BdTemplate);
+	if (Status != XST_SUCCESS) {
+
+		xil_printf("Failed clone BDs\r\n");
+		return XST_FAILURE;
+	}
+
+	/*
+	 * Set the coalescing threshold, so only one transmit interrupt
+	 * occurs for this example
+	 *
+	 * If you would like to have multiple interrupts to happen, change
+	 * the COALESCING_COUNT to be a smaller value
+	 */
+	Status = XAxiDma_BdRingSetCoalesce(TxRingPtr, COALESCING_COUNT,
+			DELAY_TIMER_COUNT);
+	if (Status != XST_SUCCESS) {
+
+		xil_printf("Failed set coalescing"
+		" %d/%d\r\n",COALESCING_COUNT, DELAY_TIMER_COUNT);
+		return XST_FAILURE;
+	}
+
+	/* Enable all TX interrupts */
+	XAxiDma_BdRingIntEnable(TxRingPtr, XAXIDMA_IRQ_ALL_MASK);
+
+	/* Start the TX channel */
+	Status = XAxiDma_UpdateBdRingCDesc(TxRingPtr);
+		if (Status != XST_SUCCESS) {
+			xil_printf("Failed bd start %x\r\n", Status);
+			return XST_FAILURE;
+	}
+
+	Status = XAxiDma_StartBdRingHw(TxRingPtr);
+	if (Status != XST_SUCCESS) {
+
+		xil_printf("Failed bd start %x\r\n", Status);
+		return XST_FAILURE;
+	}
+
+	return XST_SUCCESS;
+}
+
+int sendPacket(XAxiDma* AxiDmaInstPtr, u8* startAddr, u32 length, u8 TDest, u8 TId)
+{
+	XAxiDma_BdRing* TxRingPtr = XAxiDma_GetTxRing(AxiDmaInstPtr);
+	XAxiDma_Bd *BdPtr = NULL;
+	int Status;
+	u32 CrBits = 0;
+
+	// Check alignment
+	if ((uint32_t)startAddr % MM2S_WIDTH != 0) {
+		xil_printf("Error: startAddr is not aligned!\r\n");
+		return XST_FAILURE;
+	}
+
+    if (length % MM2S_WIDTH != 0) {
+		xil_printf("Error: length is not a multiple of the S2MM width!\r\n");
+		return XST_FAILURE;
+	}
+
+	Status = XAxiDma_BdRingAlloc(TxRingPtr,
+						1,
+						&BdPtr);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Tx bd alloc failed with %d", Status);
+		if (Status == XST_FAILURE ) xil_printf(" (not enough free BDs)\r\n");
+		else xil_printf("\r\n");
+		return XST_FAILURE;
+	}
+
+
+	Status = XAxiDma_BdSetBufAddr(BdPtr, (UINTPTR)startAddr);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Tx set buffer addr %x on BD %x failed %d\r\n",
+		(unsigned int)startAddr,
+		(unsigned int)BdPtr,
+		Status);
+
+		return XST_FAILURE;
+	}
+
+	Status = XAxiDma_BdSetLength(BdPtr, length,
+							TxRingPtr->MaxTransferLen);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Tx set length %d on BD %x failed %d\r\n",
+				length, (unsigned int)BdPtr, Status);
+
+		return XST_FAILURE;
+	}
+
+	CrBits = XAXIDMA_BD_CTRL_TXSOF_MASK | XAXIDMA_BD_CTRL_TXEOF_MASK; // First and last descriptor of the packet
+
+	XAxiDma_BdSetCtrl(BdPtr, CrBits);
+	XAxiDma_BdSetId(BdPtr, startAddr);
+	XAxiDma_BdSetTId(BdPtr, TId);
+	XAxiDma_BdSetTDest(BdPtr, TDest);
+	XAxiDma_BdSetTUser(BdPtr, TUSER);
+	XAxiDma_BdSetARCache(BdPtr, ARCACHE);
+	XAxiDma_BdSetARUser(BdPtr, ARUSER);
+	XAxiDma_BdSetVSize(BdPtr, 1);
+	XAxiDma_BdSetStride(BdPtr, 1);
+
+	/* Give the BD to hardware */
+	Status = XAxiDma_BdRingToHw(TxRingPtr, 1,
+			BdPtr);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Failed to hw, length %d\r\n",
+			(int)XAxiDma_BdGetLength(BdPtr,
+					TxRingPtr->MaxTransferLen));
+		return XST_FAILURE;
+	}
+
+	return XST_SUCCESS;
+}
+
+int receivePacket(XAxiDma* AxiDmaInstPtr, int channel, u8* startAddr, u32 length)
+{
+	XAxiDma_BdRing* RxRingPtr = XAxiDma_GetRxIndexRing(AxiDmaInstPtr, channel);
+	XAxiDma_Bd *BdPtr;
+	int Status;
+
+	// Check alignment
+	if ((uint32_t)startAddr % S2MM_WIDTH != 0) {
+		xil_printf("Error: startAddr is not aligned!\r\n");
+		return XST_FAILURE;
+	}
+
+    if (length % S2MM_WIDTH != 0) {
+		xil_printf("Error: length is not a multiple of the S2MM width!\r\n");
+		return XST_FAILURE;
+	}
+
+	Status = XAxiDma_BdRingAlloc(RxRingPtr, 1, &BdPtr);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Rx bd alloc failed with %d", Status);
+		if (Status == XST_FAILURE ) xil_printf(" (not enough free BDs)\r\n");
+		else xil_printf("\r\n");
+		return XST_FAILURE;
+	}
+
+	Status = XAxiDma_BdSetBufAddr(BdPtr, (UINTPTR)startAddr);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Rx set buffer addr %x on BD %x failed %d\r\n",
+		(unsigned int)startAddr,
+		(unsigned int)BdPtr, Status);
+
+		return XST_FAILURE;
+	}
+
+	Status = XAxiDma_BdSetLength(BdPtr, length, RxRingPtr->MaxTransferLen);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Rx set length %d on BD %x failed %d\r\n",
+					length, (unsigned int)BdPtr, Status);
+
+		return XST_FAILURE;
+	}
+
+	/* Receive BDs do not need to set anything for the control
+	 * The hardware will set the SOF/EOF bits per stream status
+	 */
+	XAxiDma_BdSetCtrl(BdPtr, 0);
+	XAxiDma_BdSetId(BdPtr, startAddr);
+	XAxiDma_BdSetARCache(BdPtr, ARCACHE);
+	XAxiDma_BdSetARUser(BdPtr, ARUSER);
+	XAxiDma_BdSetVSize(BdPtr, 1);
+	XAxiDma_BdSetStride(BdPtr, 1);
+
+	Status = XAxiDma_BdRingToHw(RxRingPtr, 1, BdPtr);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Rx ToHw failed with %d\r\n", Status);
+		return XST_FAILURE;
+	}
+
+	return XST_SUCCESS;
+}
+

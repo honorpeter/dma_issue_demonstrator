@@ -1,0 +1,12 @@
+------- DMA issue demonstrator --------                                         
+--- Entering main() ---                                                         
+DMA transfers in progress...                                                    
+                                                                                
+TxTransfers = 1000                                                              
+RxTransfers = 10000                                                             
+                                                                                
+TxDone=106, RxDone=25                                                           
+Transfers failed.                                                               
+stat_tx_interrupts=106                                                          
+stat_rx_interrupts=25                                                           
+--- Exiting main() ---     

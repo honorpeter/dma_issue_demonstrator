@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="zusys_ila_tx_0_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_ila_tx_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="zusys_top_0_0_synth_1" LaunchDir="/home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/zusys_top_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+</Runs>
+
