@@ -60,3 +60,281 @@ aarch64-none-elf-size dma_issue_demonstrator.elf  |tee "dma_issue_demonstrator.e
   94332	   7832	  23648	 125812	  1eb74	dma_issue_demonstrator.elf
 Finished building: dma_issue_demonstrator.elf.size
  
+10:04:04 **** Clean-only build of project standalone_bsp_0 ****
+make -k clean 
+make -C psu_cortexa53_0/libsrc/ipipsu_v2_3/src -s clean 
+make -C psu_cortexa53_0/libsrc/gpiops_v3_3/src -s clean 
+make -C psu_cortexa53_0/libsrc/scugic_v3_8/src -s clean 
+make -C psu_cortexa53_0/libsrc/qspipsu_v1_6/src -s clean 
+make -C psu_cortexa53_0/libsrc/sysmonpsu_v2_2/src -s clean 
+make -C psu_cortexa53_0/libsrc/standalone_v6_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/zdma_v1_4/src -s clean 
+make -C psu_cortexa53_0/libsrc/ttcps_v3_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/cpu_cortexa53_v1_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/rtcpsu_v1_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/axidma_v9_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/ddrcpsu_v1_1/src -s clean 
+make -C psu_cortexa53_0/libsrc/csudma_v1_1/src -s clean 
+make -C psu_cortexa53_0/libsrc/iicps_v3_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/sdps_v3_3/src -s clean 
+make -C psu_cortexa53_0/libsrc/emacps_v3_6/src -s clean 
+make -C psu_cortexa53_0/libsrc/wdtps_v3_0/src -s clean 
+make -C psu_cortexa53_0/libsrc/axipmon_v6_6/src -s clean 
+make -C psu_cortexa53_0/libsrc/coresightps_dcc_v1_4/src -s clean 
+make -C psu_cortexa53_0/libsrc/usbpsu_v1_3/src -s clean 
+make -C psu_cortexa53_0/libsrc/uartps_v3_5/src -s clean 
+rm -f psu_cortexa53_0/lib/libxil.a
+10:04:05 **** Clean-only build of configuration Debug for project dma_issue_demonstrator ****
+make clean 
+rm -rf  ./src/dma_management.o ./src/main.o  ./src/dma_management.d ./src/main.d  dma_issue_demonstrator.elf.size  dma_issue_demonstrator.elf
+ 
+10:04:05 **** Clean-only build of configuration Debug for project hello_world ****
+make clean 
+rm -rf  ./src/helloworld.o ./src/platform.o  ./src/helloworld.d ./src/platform.d  hello_world.elf.size  hello_world.elf
+ 
+10:04:14 **** Build of project standalone_bsp_0 ****
+make -k all 
+Running Make include in psu_cortexa53_0/libsrc/ipipsu_v2_3/src
+make -C psu_cortexa53_0/libsrc/ipipsu_v2_3/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/gpiops_v3_3/src
+make -C psu_cortexa53_0/libsrc/gpiops_v3_3/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/scugic_v3_8/src
+make -C psu_cortexa53_0/libsrc/scugic_v3_8/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/qspipsu_v1_6/src
+make -C psu_cortexa53_0/libsrc/qspipsu_v1_6/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/sysmonpsu_v2_2/src
+make -C psu_cortexa53_0/libsrc/sysmonpsu_v2_2/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/standalone_v6_5/src
+make -C psu_cortexa53_0/libsrc/standalone_v6_5/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/zdma_v1_4/src
+make -C psu_cortexa53_0/libsrc/zdma_v1_4/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/ttcps_v3_5/src
+make -C psu_cortexa53_0/libsrc/ttcps_v3_5/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/cpu_cortexa53_v1_5/src
+make -C psu_cortexa53_0/libsrc/cpu_cortexa53_v1_5/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/rtcpsu_v1_5/src
+make -C psu_cortexa53_0/libsrc/rtcpsu_v1_5/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/axidma_v9_5/src
+make -C psu_cortexa53_0/libsrc/axidma_v9_5/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/ddrcpsu_v1_1/src
+make -C psu_cortexa53_0/libsrc/ddrcpsu_v1_1/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/csudma_v1_1/src
+make -C psu_cortexa53_0/libsrc/csudma_v1_1/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/iicps_v3_5/src
+make -C psu_cortexa53_0/libsrc/iicps_v3_5/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/sdps_v3_3/src
+make -C psu_cortexa53_0/libsrc/sdps_v3_3/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/emacps_v3_6/src
+make -C psu_cortexa53_0/libsrc/emacps_v3_6/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/wdtps_v3_0/src
+make -C psu_cortexa53_0/libsrc/wdtps_v3_0/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/axipmon_v6_6/src
+make -C psu_cortexa53_0/libsrc/axipmon_v6_6/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/coresightps_dcc_v1_4/src
+make -C psu_cortexa53_0/libsrc/coresightps_dcc_v1_4/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/usbpsu_v1_3/src
+make -C psu_cortexa53_0/libsrc/usbpsu_v1_3/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make include in psu_cortexa53_0/libsrc/uartps_v3_5/src
+make -C psu_cortexa53_0/libsrc/uartps_v3_5/src -s include  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Running Make libs in psu_cortexa53_0/libsrc/ipipsu_v2_3/src
+make -C psu_cortexa53_0/libsrc/ipipsu_v2_3/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling ipipsu
+aarch64-none-elf-ar: creating ../../../lib/libxil.a
+Running Make libs in psu_cortexa53_0/libsrc/gpiops_v3_3/src
+make -C psu_cortexa53_0/libsrc/gpiops_v3_3/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling gpiops
+Running Make libs in psu_cortexa53_0/libsrc/scugic_v3_8/src
+make -C psu_cortexa53_0/libsrc/scugic_v3_8/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling scugic
+Running Make libs in psu_cortexa53_0/libsrc/qspipsu_v1_6/src
+make -C psu_cortexa53_0/libsrc/qspipsu_v1_6/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling qspipsu
+Running Make libs in psu_cortexa53_0/libsrc/sysmonpsu_v2_2/src
+make -C psu_cortexa53_0/libsrc/sysmonpsu_v2_2/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling sysmonpsu
+Running Make libs in psu_cortexa53_0/libsrc/standalone_v6_5/src
+make -C psu_cortexa53_0/libsrc/standalone_v6_5/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling standalone A53
+translation_table.S:149:2: warning: #warning "There's no DDR_1 in the HW design. MMU translation table marks 32 GB DDR address space as undefined" [-Wcpp]
+ #warning "There's no DDR_1 in the HW design. MMU translation table marks 32 GB DDR address space as undefined"
+  ^~~~~~~
+Running Make libs in psu_cortexa53_0/libsrc/zdma_v1_4/src
+make -C psu_cortexa53_0/libsrc/zdma_v1_4/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling zdma
+Running Make libs in psu_cortexa53_0/libsrc/ttcps_v3_5/src
+make -C psu_cortexa53_0/libsrc/ttcps_v3_5/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling ttcps
+Running Make libs in psu_cortexa53_0/libsrc/cpu_cortexa53_v1_5/src
+make -C psu_cortexa53_0/libsrc/cpu_cortexa53_v1_5/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling cpu_cortexa53
+Running Make libs in psu_cortexa53_0/libsrc/rtcpsu_v1_5/src
+make -C psu_cortexa53_0/libsrc/rtcpsu_v1_5/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling rtcpsu
+Running Make libs in psu_cortexa53_0/libsrc/axidma_v9_5/src
+make -C psu_cortexa53_0/libsrc/axidma_v9_5/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling axidma
+Running Make libs in psu_cortexa53_0/libsrc/ddrcpsu_v1_1/src
+make -C psu_cortexa53_0/libsrc/ddrcpsu_v1_1/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling ddrcpsu
+Running Make libs in psu_cortexa53_0/libsrc/csudma_v1_1/src
+make -C psu_cortexa53_0/libsrc/csudma_v1_1/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling csudma
+Running Make libs in psu_cortexa53_0/libsrc/iicps_v3_5/src
+make -C psu_cortexa53_0/libsrc/iicps_v3_5/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling iicps
+Running Make libs in psu_cortexa53_0/libsrc/sdps_v3_3/src
+make -C psu_cortexa53_0/libsrc/sdps_v3_3/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling sdps
+Running Make libs in psu_cortexa53_0/libsrc/emacps_v3_6/src
+make -C psu_cortexa53_0/libsrc/emacps_v3_6/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling emacps
+Running Make libs in psu_cortexa53_0/libsrc/wdtps_v3_0/src
+make -C psu_cortexa53_0/libsrc/wdtps_v3_0/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling wdtps
+Running Make libs in psu_cortexa53_0/libsrc/axipmon_v6_6/src
+make -C psu_cortexa53_0/libsrc/axipmon_v6_6/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling axipmon
+Running Make libs in psu_cortexa53_0/libsrc/coresightps_dcc_v1_4/src
+make -C psu_cortexa53_0/libsrc/coresightps_dcc_v1_4/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling coresightps_dcc
+Running Make libs in psu_cortexa53_0/libsrc/usbpsu_v1_3/src
+make -C psu_cortexa53_0/libsrc/usbpsu_v1_3/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling usbpsu
+Running Make libs in psu_cortexa53_0/libsrc/uartps_v3_5/src
+make -C psu_cortexa53_0/libsrc/uartps_v3_5/src -s libs  "SHELL=/bin/sh" "COMPILER=aarch64-none-elf-gcc" "ARCHIVER=aarch64-none-elf-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g -Wall -Wextra"
+Compiling uartps
+Finished building libraries
+10:04:28 **** Build of configuration Debug for project dma_issue_demonstrator ****
+make all 
+Building file: ../src/dma_management.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/dma_management.o" -I../../standalone_bsp_0/psu_cortexa53_0/include -MMD -MP -MF"src/dma_management.d" -MT"src/dma_management.o" -o "src/dma_management.o" "../src/dma_management.c"
+../src/dma_management.c: In function 'TxCallBack':
+../src/dma_management.c:70:4: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+    printf("Error on BD at address 0x%x\r\n", BdCurPtr);
+    ^~~~~~
+../src/dma_management.c:70:4: warning: incompatible implicit declaration of built-in function 'printf'
+../src/dma_management.c:70:4: note: include '<stdio.h>' or provide a declaration of 'printf'
+../src/dma_management.c:70:38: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'u32 (*)[16] {aka unsigned int (*)[16]}' [-Wformat=]
+    printf("Error on BD at address 0x%x\r\n", BdCurPtr);
+                                      ^
+../src/dma_management.c: In function 'sendPacket':
+../src/dma_management.c:661:6: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  if ((uint32_t)startAddr % MM2S_WIDTH != 0) {
+      ^
+../src/dma_management.c:685:3: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   (unsigned int)startAddr,
+   ^
+../src/dma_management.c:686:3: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   (unsigned int)BdPtr,
+   ^
+../src/dma_management.c:696:13: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     length, (unsigned int)BdPtr, Status);
+             ^
+../src/dma_management.c: In function 'receivePacket':
+../src/dma_management.c:733:6: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  if ((uint32_t)startAddr % S2MM_WIDTH != 0) {
+      ^
+../src/dma_management.c:754:3: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   (unsigned int)startAddr,
+   ^
+../src/dma_management.c:755:3: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   (unsigned int)BdPtr, Status);
+   ^
+../src/dma_management.c:763:14: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+      length, (unsigned int)BdPtr, Status);
+              ^
+Finished building: ../src/dma_management.c
+ 
+Building file: ../src/main.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I../../standalone_bsp_0/psu_cortexa53_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:163:13: warning: unknown escape sequence: '\C'
+  xil_printf("\r\Channel TX 0.0\r\n", 0);
+             ^~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:164:24: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  XAxiDma_Bd* curTxBd = (XAxiDma_Bd*)XAxiDma_ReadReg(TxRingPtr->ChanBase, 0x08); // Get pointer to the current descriptor
+                        ^
+In file included from ../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma.h:488:0,
+                 from ../src/dma_management.h:10,
+                 from ../src/main.c:44:
+../src/main.c:165:47: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  XAxiDma_DumpBd(XAxiDma_BdRingPrev(TxRingPtr, (u32)curTxBd)); // Dump last descriptor
+                                               ^
+../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma_bdring.h:316:11: note: in definition of macro 'XAxiDma_BdRingPrev'
+   (((u32)(BdPtr) <= (RingPtr)->FirstBdAddr) ?  \
+           ^~~~~
+../src/main.c:165:47: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  XAxiDma_DumpBd(XAxiDma_BdRingPrev(TxRingPtr, (u32)curTxBd)); // Dump last descriptor
+                                               ^
+../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma_bdring.h:318:24: note: in definition of macro 'XAxiDma_BdRingPrev'
+    (XAxiDma_Bd*)((u32)(BdPtr) - (RingPtr)->Separation))
+                        ^~~~~
+../src/main.c:180:25: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   XAxiDma_Bd* curRxBd = (XAxiDma_Bd*)XAxiDma_ReadReg(curRxRingPtr->ChanBase, curBdOffset); // Get pointer to the current descriptor
+                         ^
+In file included from ../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma.h:488:0,
+                 from ../src/dma_management.h:10,
+                 from ../src/main.c:44:
+../src/main.c:181:51: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   XAxiDma_DumpBd(XAxiDma_BdRingPrev(curRxRingPtr, (u32)curRxBd)); // Dump last descriptor
+                                                   ^
+../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma_bdring.h:316:11: note: in definition of macro 'XAxiDma_BdRingPrev'
+   (((u32)(BdPtr) <= (RingPtr)->FirstBdAddr) ?  \
+           ^~~~~
+../src/main.c:181:51: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   XAxiDma_DumpBd(XAxiDma_BdRingPrev(curRxRingPtr, (u32)curRxBd)); // Dump last descriptor
+                                                   ^
+../../standalone_bsp_0/psu_cortexa53_0/include/xaxidma_bdring.h:318:24: note: in definition of macro 'XAxiDma_BdRingPrev'
+    (XAxiDma_Bd*)((u32)(BdPtr) - (RingPtr)->Separation))
+                        ^~~~~
+../src/main.c: In function 'dma_transfers':
+../src/main.c:256:36: warning: comparison between pointer and integer
+     if ((RxStartAddr + length - 1) > RX_BUFFER_HIGH) RxStartAddr = (u32*)RX_BUFFER_BASE;
+                                    ^
+Finished building: ../src/main.c
+ 
+Building target: dma_issue_demonstrator.elf
+Invoking: ARM v8 gcc linker
+aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/psu_cortexa53_0/lib -o "dma_issue_demonstrator.elf"  ./src/dma_management.o ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: dma_issue_demonstrator.elf
+ 
+Invoking: ARM v8 Print Size
+aarch64-none-elf-size dma_issue_demonstrator.elf  |tee "dma_issue_demonstrator.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  94332	   7832	  23648	 125812	  1eb74	dma_issue_demonstrator.elf
+Finished building: dma_issue_demonstrator.elf.size
+ 
+10:28:43 **** Clean-only build of project standalone_bsp_0 ****
+make -k clean 
+make -C psu_cortexa53_0/libsrc/ipipsu_v2_3/src -s clean 
+make -C psu_cortexa53_0/libsrc/gpiops_v3_3/src -s clean 
+make -C psu_cortexa53_0/libsrc/scugic_v3_8/src -s clean 
+make -C psu_cortexa53_0/libsrc/qspipsu_v1_6/src -s clean 
+make -C psu_cortexa53_0/libsrc/sysmonpsu_v2_2/src -s clean 
+make -C psu_cortexa53_0/libsrc/standalone_v6_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/zdma_v1_4/src -s clean 
+make -C psu_cortexa53_0/libsrc/ttcps_v3_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/cpu_cortexa53_v1_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/rtcpsu_v1_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/axidma_v9_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/ddrcpsu_v1_1/src -s clean 
+make -C psu_cortexa53_0/libsrc/csudma_v1_1/src -s clean 
+make -C psu_cortexa53_0/libsrc/iicps_v3_5/src -s clean 
+make -C psu_cortexa53_0/libsrc/sdps_v3_3/src -s clean 
+make -C psu_cortexa53_0/libsrc/emacps_v3_6/src -s clean 
+make -C psu_cortexa53_0/libsrc/wdtps_v3_0/src -s clean 
+make -C psu_cortexa53_0/libsrc/axipmon_v6_6/src -s clean 
+make -C psu_cortexa53_0/libsrc/coresightps_dcc_v1_4/src -s clean 
+make -C psu_cortexa53_0/libsrc/usbpsu_v1_3/src -s clean 
+make -C psu_cortexa53_0/libsrc/uartps_v3_5/src -s clean 
+rm -f psu_cortexa53_0/lib/libxil.a
+10:28:44 **** Clean-only build of configuration Debug for project dma_issue_demonstrator ****
+make clean 
+rm -rf  ./src/dma_management.o ./src/main.o  ./src/dma_management.d ./src/main.d  dma_issue_demonstrator.elf.size  dma_issue_demonstrator.elf
+ 
+10:28:44 **** Clean-only build of configuration Debug for project hello_world ****
+make clean 
+rm -rf  ./src/helloworld.o ./src/platform.o  ./src/helloworld.d ./src/platform.d  hello_world.elf.size  hello_world.elf
+ 

@@ -29,10 +29,7 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part_repo_paths /home/matt/workspace/StarterKit/board_files [current_project]
 set_property board_part trenz.biz:te0808_es1_tebf0808:part0:2.0 [current_project]
-set_property ip_repo_paths {
-  /home/matt/Git/dma_issue_demonstrator/ip_lib
-  /home/matt/Git/dma_issue_demonstrator/dma_killer_project
-} [current_project]
+set_property ip_repo_paths /home/matt/Git/dma_issue_demonstrator/dma_killer_project [current_project]
 set_property ip_output_repo /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_vhdl -library xil_defaultlib /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.srcs/sources_1/bd/zusys/hdl/zusys_wrapper.vhd

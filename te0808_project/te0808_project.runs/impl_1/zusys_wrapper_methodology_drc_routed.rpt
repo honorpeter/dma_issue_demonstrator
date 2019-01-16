@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-| Date         : Wed Jan 16 08:06:23 2019
+| Date         : Wed Jan 16 10:24:51 2019
 | Host         : matt-HP-EliteBook-Folio-9470m running 64-bit Ubuntu 16.04.4 LTS
 | Command      : report_methodology -file zusys_wrapper_methodology_drc_routed.rpt -pb zusys_wrapper_methodology_drc_routed.pb -rpx zusys_wrapper_methodology_drc_routed.rpx
 | Design       : zusys_wrapper
@@ -545,7 +545,7 @@ Related violations: <none>
 XDCB-5#85 Warning
 Runtime inefficient way to find pin objects  
 The option '-from : [get_pins -hierarchical -filter {NAME =~ "*BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TDI"}]' of constraint 'set_min_delay' uses inefficient query to find pin objects (see constraint position '250' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
-Current XDC: /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/impl_1/.Xil/Vivado-4138-matt-HP-EliteBook-Folio-9470m/dbg_hub_CV.0/out/xsdbm.xdc (Line: 6)
+Current XDC: /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/impl_1/.Xil/Vivado-15493-matt-HP-EliteBook-Folio-9470m/dbg_hub_CV.0/out/xsdbm.xdc (Line: 6)
 Related violations: <none>
 
 XDCB-5#86 Warning
@@ -677,7 +677,7 @@ Related violations: <none>
 XDCB-5#107 Warning
 Runtime inefficient way to find pin objects  
 The option 'objects : [get_pins -hierarchical -filter {NAME =~ "*BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK"}]' of constraint 'create_clock' uses inefficient query to find pin objects (see constraint position '249' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
-Current XDC: /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/impl_1/.Xil/Vivado-4138-matt-HP-EliteBook-Folio-9470m/dbg_hub_CV.0/out/xsdbm.xdc (Line: 5)
+Current XDC: /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/impl_1/.Xil/Vivado-15493-matt-HP-EliteBook-Folio-9470m/dbg_hub_CV.0/out/xsdbm.xdc (Line: 5)
 Related violations: <none>
 
 

@@ -2,8 +2,8 @@
 # Vivado v2017.4 (64-bit)
 # SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
 # IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
-# Start of session at: Wed Jan 16 07:50:29 2019
-# Process ID: 4138
+# Start of session at: Wed Jan 16 10:09:24 2019
+# Process ID: 15493
 # Current directory: /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/impl_1
 # Command line: vivado -log zusys_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source zusys_wrapper.tcl -notrace
 # Log file: /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.runs/impl_1/zusys_wrapper.vdi

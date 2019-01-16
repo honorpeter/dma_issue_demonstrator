@@ -73,10 +73,7 @@ set rc [catch {
   set_param project.singleFileAddWarning.threshold 0
   set_property webtalk.parent_dir /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.cache/wt [current_project]
   set_property parent.project_path /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.xpr [current_project]
-  set_property ip_repo_paths {
-  /home/matt/Git/dma_issue_demonstrator/ip_lib
-  /home/matt/Git/dma_issue_demonstrator/dma_killer_project
-} [current_project]
+  set_property ip_repo_paths /home/matt/Git/dma_issue_demonstrator/dma_killer_project [current_project]
   set_property ip_output_repo /home/matt/Git/dma_issue_demonstrator/te0808_project/te0808_project.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]

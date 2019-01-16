@@ -1,6 +1,7 @@
-08:10:34 **** Incremental Build of configuration Debug for project hello_world ****
-make all 
-make: Nothing to be done for 'all'.
+10:28:44 **** Clean-only build of configuration Debug for project hello_world ****
+make clean 
+rm -rf  ./src/helloworld.o ./src/platform.o  ./src/helloworld.d ./src/platform.d  hello_world.elf.size  hello_world.elf
+ 
 
-08:10:34 Build Finished (took 374ms)
+10:28:44 Build Finished (took 368ms)
 
